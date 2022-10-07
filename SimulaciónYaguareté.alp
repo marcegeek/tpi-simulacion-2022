@@ -4,10 +4,10 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.0.201804140219" AlpVersion="8.3.0">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
 <Model>
 	<Id>1151503800779</Id>
-	<Name><![CDATA[Wandering Elephants]]></Name>
+	<Name><![CDATA[SimulaciónYaguareté]]></Name>
 	<Description><![CDATA[An agent based model of interaction of animals and vegetation. A number of elephants live in the area 100 by 100 kilometers. There are two layers of geographical information: altitude and vegetation (you can switch between them). Elephants randomly wander in the area, but every once in a while they get thirsty and go to the nearest lake to drink water. As elephants walk, they demolish vegetation with a certain rate. Vegetation regenerates, but it can never exceed a natural maximum that depends on the altitude. Various landscapes can be generated.]]></Description>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[wandering_elephants]]></JavaPackageName>
@@ -16,7 +16,7 @@
 		<!--   =========   Active Object Class   ========  -->
 		<ActiveObjectClass>
 			<Id>1151503813477</Id>
-			<Name><![CDATA[Elephant]]></Name>
+			<Name><![CDATA[YaguareteMacho]]></Name>
 			<ClientAreaTopLeft><X>-241</X><Y>65</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -34,6 +34,7 @@
 			<MakeDefaultViewArea>false</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
+			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
 	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
@@ -81,6 +82,18 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 	//and start moving in the new direction to a virtual distant target - this will be stopped by the newDir event
 	moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );
 }]]></AfterStepCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
 			</AgentProperties>
 			<EnvironmentProperties>
 					<EnableSteps>false</EnableSteps>
@@ -133,6 +146,7 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 				<Scale>10</Scale>
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
+			<CurrentLevel>1665067597882</CurrentLevel>
 			<ConnectionsId>1412347600670</ConnectionsId>
 			<Variables>
 				<Variable Class="PlainVariable">
@@ -233,14 +247,14 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1151505032670</Id>
 					<Name><![CDATA[GotThirsty]]></Name>
-					<X>0</X><Y>10</Y>
+					<X>230</X><Y>130</Y>
 					<Label><X>170</X><Y>140</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Points>
-						<Point><X>230</X><Y>120</Y></Point>
-						<Point><X>230</X><Y>160</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>40</Y></Point>
 					</Points>
 					<IconOffset>14.0</IconOffset>
 					<Properties Source="1151503879642" Target="1151503982029" Trigger="timeout">
@@ -264,14 +278,14 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1151505051948</Id>
 					<Name><![CDATA[DrinkWater]]></Name>
-					<X>140</X><Y>60</Y>
+					<X>270</X><Y>170</Y>
 					<Label><X>140</X><Y>90</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Points>
-						<Point><X>130</X><Y>110</Y></Point>
-						<Point><X>130</X><Y>70</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-40</Y></Point>
 					</Points>
 					<IconOffset>14.0</IconOffset>
 					<Properties Source="1151503982029" Target="1151503879642" Trigger="message">
@@ -441,54 +455,46 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 				</ContainerLink>
 			</ContainerLinks>
 
-			<Shapes>
-				<Polyline>
-					<Id>1182881707704</Id>
-					<Name><![CDATA[polyline]]></Name>
-					<X>-4</X><Y>3</Y>
+			<Presentation>
+				<Level>
+					<Id>1665067597882</Id>
+					<Name><![CDATA[level]]></Name>
+					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LevelVisibility>ALWAYS_SHOW</LevelVisibility>
+
+			<Presentation>
+				<Image>
+					<Id>1665161570167</Id>
+					<Name><![CDATA[image]]></Name>
+					<X>-10</X><Y>-10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<FillColor>-16777216</FillColor>
-					<FillColorCode><![CDATA[thirsty ? red : black]]></FillColorCode>
-					<FillMaterial>null</FillMaterial>
-					<Points>
-					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>0</X><Y>-5</Y><Z>0</Z></Point>
-					   <Point><X>1</X><Y>-6</Y><Z>0</Z></Point>
-					   <Point><X>3</X><Y>-6</Y><Z>0</Z></Point>
-					   <Point><X>5</X><Y>-7</Y><Z>0</Z></Point>
-					   <Point><X>6</X><Y>-7</Y><Z>0</Z></Point>
-					   <Point><X>7</X><Y>-7</Y><Z>0</Z></Point>
-					   <Point><X>8</X><Y>-6</Y><Z>0</Z></Point>
-					   <Point><X>9</X><Y>-5</Y><Z>0</Z></Point>
-					   <Point><X>10</X><Y>-5</Y><Z>0</Z></Point>
-					   <Point><X>10</X><Y>-4</Y><Z>0</Z></Point>
-					   <Point><X>9</X><Y>-4</Y><Z>0</Z></Point>
-					   <Point><X>8</X><Y>-4</Y><Z>0</Z></Point>
-					   <Point><X>7</X><Y>-3</Y><Z>0</Z></Point>
-					   <Point><X>7</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>5</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>4</X><Y>-1</Y><Z>0</Z></Point>
-					   <Point><X>3</X><Y>-1</Y><Z>0</Z></Point>
-					   <Point><X>2</X><Y>0</Y><Z>0</Z></Point>
-					</Points>
-					<Closed>true</Closed>
-				</Polyline>
-			</Shapes>
+					<Width>20</Width>
+					<Height>20</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<ClassName><![CDATA[jaguar_macho.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+			</Presentation>
+
+				</Level>
+			</Presentation>
 
 		</ActiveObjectClass>
 		<!--   =========   Active Object Class   ========  -->
@@ -499,7 +505,7 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 			<Import><![CDATA[import java.awt.image.BufferedImage;]]></Import>
 			<StartupCode><![CDATA[makeUpAltitudes();
 makeUpVegetation();
-placeElephants();]]></StartupCode>
+posicionarYaguaretes();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1412347600672</Id>
@@ -516,6 +522,7 @@ placeElephants();]]></StartupCode>
 			<MakeDefaultViewArea>false</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
+			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
 	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
@@ -525,6 +532,18 @@ placeElephants();]]></StartupCode>
 					<Code><![CDATA[10]]></Code>
 					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 				</VelocityCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
 			</AgentProperties>
 			<EnvironmentProperties>
 					<EnableSteps>true</EnableSteps>
@@ -578,12 +597,13 @@ placeElephants();]]></StartupCode>
 				<Scale>10</Scale>
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
+			<CurrentLevel>1665067597892</CurrentLevel>
 			<ConnectionsId>1412347600698</ConnectionsId>
 			<Variables>
 				<Variable Class="PlainVariable">
 					<Id>1151530012440</Id>
 					<Name><![CDATA[altitude]]></Name>
-					<X>-500</X><Y>200</Y>
+					<X>-580</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -643,7 +663,7 @@ placeElephants();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1152392597505</Id>
 					<Name><![CDATA[vegetation]]></Name>
-					<X>-500</X><Y>250</Y>
+					<X>-580</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -673,7 +693,7 @@ placeElephants();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1508770572138</Id>
 					<Name><![CDATA[altitudeChanged]]></Name>
-					<X>-500</X><Y>300</Y>
+					<X>-580</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -687,8 +707,8 @@ placeElephants();]]></StartupCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1151529818972</Id>
-					<Name><![CDATA[NumberOfElephants]]></Name>
-					<X>-650</X><Y>50</Y>
+					<Name><![CDATA[NumeroMachos]]></Name>
+					<X>-580</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -698,10 +718,36 @@ placeElephants();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[50]]></Code>
+							<Code><![CDATA[6]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
+							<Name><![CDATA[null]]></Name>
+							<Label><![CDATA[Number of elephants]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1665162658868</Id>
+					<Name><![CDATA[NumeroHembras]]></Name>
+					<X>-580</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[6]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1665162658866</Id>
 							<Name><![CDATA[null]]></Name>
 							<Label><![CDATA[Number of elephants]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -718,7 +764,7 @@ placeElephants();]]></StartupCode>
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1151530082571</Id>
 					<Name><![CDATA[makeUpAltitudes]]></Name>
-					<X>-500</X><Y>50</Y>
+					<X>-580</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -823,13 +869,25 @@ if( alt < 65 )
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1151609149694</Id>
-					<Name><![CDATA[placeElephants]]></Name>
-					<X>-500</X><Y>150</Y>
+					<Name><![CDATA[posicionarYaguaretes]]></Name>
+					<X>-580</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for( Elephant e : elephants ) {
+					<Body><![CDATA[for( YaguareteMacho e : yaguaretes_machos ) {
+	e.stop();
+	double x = 0;
+	double y = 0;
+	do {
+		x = uniform( 500 );
+		y = uniform( 500 );
+	} while( altitude[(int)(x/5)][(int)(y/5)] < 0 );
+	e.jumpTo( x, y );
+	e.headingRandom();
+}
+
+for( YaguareteHembra e : yaguaretes_hembras ) {
 	e.stop();
 	double x = 0;
 	double y = 0;
@@ -846,7 +904,7 @@ if( alt < 65 )
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1152392648769</Id>
 					<Name><![CDATA[makeUpVegetation]]></Name>
-					<X>-500</X><Y>100</Y>
+					<X>-580</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1028,7 +1086,7 @@ if( veg < 200000 )
 			<EmbeddedObjects>
 				<EmbeddedObject>
 					<Id>1169335565775</Id>
-					<Name><![CDATA[elephants]]></Name>
+					<Name><![CDATA[yaguaretes_machos]]></Name>
 					<X>-350</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1037,12 +1095,12 @@ if( veg < 200000 )
 					<PresentationId>1169335565776</PresentationId>
 					<ActiveObjectClass>
 						<PackageName><![CDATA[wandering_elephants]]></PackageName>
-						<ClassName><![CDATA[Elephant]]></ClassName>
+						<ClassName><![CDATA[YaguareteMacho]]></ClassName>
 					</ActiveObjectClass>
 					<GenericParameterSubstitute>
 						<GenericParameterSubstituteReference>
 							<PackageName><![CDATA[wandering_elephants]]></PackageName>
-							<ClassName><![CDATA[Elephant]]></ClassName>
+							<ClassName><![CDATA[YaguareteMacho]]></ClassName>
 							<ItemName><![CDATA[1412347600660]]></ItemName>
 						</GenericParameterSubstituteReference>
 					</GenericParameterSubstitute>
@@ -1057,15 +1115,79 @@ if( veg < 200000 )
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
-						<Code><![CDATA[NumberOfElephants]]></Code>
+						<Code><![CDATA[NumeroMachos]]></Code>
 					</Replication>
 					<EnvironmentCode><![CDATA[this]]></EnvironmentCode>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InEnvironment>true</InEnvironment>	
-					<InitialSpeedCode Class="CodeUnitValue">
-						<Code><![CDATA[10]]></Code>
-						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-					</InitialSpeedCode>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1665164130707</Id>
+					<Name><![CDATA[yaguaretes_hembras]]></Name>
+					<X>-350</X><Y>90</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<PresentationId>1665164130708</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<ClassName><![CDATA[YaguareteHembra]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<ClassName><![CDATA[YaguareteHembra]]></ClassName>
+							<ItemName><![CDATA[1665162382949]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[drinkingPeriod]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[100]]></Code>
+							</Value>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>true</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[NumeroHembras]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
 					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
 					<XCode Class="CodeValue">
 						<Code><![CDATA[0]]></Code>
@@ -1102,7 +1224,20 @@ if( veg < 200000 )
 				</EmbeddedObject>
 			</EmbeddedObjects>
 
-			<Shapes>
+			<Presentation>
+				<Level>
+					<Id>1665067597892</Id>
+					<Name><![CDATA[level]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LevelVisibility>ALWAYS_SHOW</LevelVisibility>
+
+			<Presentation>
 				<Rectangle>
 					<Id>1170542610967</Id>
 					<Name><![CDATA[rect5]]></Name>
@@ -1119,8 +1254,8 @@ if( veg < 200000 )
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>750</Width>
-					<Height>600</Height>
+					<Width>890</Width>
+					<Height>770</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8355840</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -1153,7 +1288,7 @@ if( veg < 200000 )
 }]]></OnDrawCode>
 					<Rotation>0.0</Rotation>
 
-			<Shapes>
+			<Presentation>
 				<Canvas>
 					<Id>1508759770691</Id>
 					<Name><![CDATA[mapCanvas]]></Name>
@@ -1168,7 +1303,7 @@ if( veg < 200000 )
 					<Height>500</Height>
 					<Rotation>0</Rotation>
 				</Canvas>
-			</Shapes>
+			</Presentation>
 
 				</Group>
 				<Rectangle>
@@ -1956,7 +2091,7 @@ if( veg < 200000 )
 				</Line>
 				<EmbeddedObjectPresentation>
 					<Id>1169335565776</Id>
-					<Name><![CDATA[elephants_presentation]]></Name>
+					<Name><![CDATA[yaguaretes_machos_presentation]]></Name>
 					<X>210</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -2105,8 +2240,6 @@ if( veg < 200000 )
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-			</Shapes>
-			<Controls>
 				<Control Type="Button">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1151532137596</Id>
@@ -2116,14 +2249,14 @@ if( veg < 200000 )
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<BasicProperties Width="120" Height="20">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
+                        <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[makeUpAltitudes();
 makeUpVegetation();
-placeElephants();
+posicionarYaguaretes();
 altitudeChanged = true;]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
@@ -2140,9 +2273,9 @@ altitudeChanged = true;]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<BasicProperties Width="140" Height="40">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
+                        <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-23296</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[if ( value == 0 )
@@ -2158,7 +2291,655 @@ altitudeChanged = true;]]></ActionCode>
 						<Link>viewVegetation</Link>
 					</ExtendedProperties>
 				</Control>
-			</Controls>
+				<Rectangle>
+					<Id>1665165062716</Id>
+					<Name><![CDATA[shapeVegColorSand1]]></Name>
+					<X>130</X><Y>80</Y>
+					<Label><X>110</X><Y>140</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>20</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1637</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1665165062718</Id>
+					<Name><![CDATA[rect6]]></Name>
+					<X>120</X><Y>70</Y>
+					<Label><X>100</X><Y>65</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<VisibleCode><![CDATA[viewVegetation == 1]]></VisibleCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16711936</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>80</Width>
+					<Height>220</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Line>
+					<Id>1665165062720</Id>
+					<Name><![CDATA[line2]]></Name>
+					<X>40</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16711936</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>160</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Line>
+					<Id>1665165062722</Id>
+					<Name><![CDATA[line3]]></Name>
+					<X>40</X><Y>530</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16711936</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>160</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1665165062724</Id>
+					<Name><![CDATA[button1]]></Name>
+					<X>80</X><Y>540</Y>
+					<Label><X>200</X><Y>25</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="120" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[makeUpAltitudes();
+makeUpVegetation();
+posicionarYaguaretes();
+altitudeChanged = true;]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="10" Style="0"/>
+						<LabelText><![CDATA[New Landscape]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1665165062726</Id>
+					<Name><![CDATA[radio1]]></Name>
+					<X>50</X><Y>290</Y>
+					<Label><X>30</X><Y>-15</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="140" Height="40">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-23296</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[if ( value == 0 )
+	altitudeChanged = true;]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA[viewVegetation]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<Button><![CDATA[Altitude]]></Button>
+						<Button><![CDATA[Vegetation]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>viewVegetation</Link>
+					</ExtendedProperties>
+				</Control>
+			</Presentation>
+
+				</Level>
+				<EmbeddedObjectPresentation>
+					<Id>1665164130708</Id>
+					<Name><![CDATA[yaguaretes_hembras_presentation]]></Name>
+					<X>220</X><Y>550</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>0.0</Latitude>
+					<Longitude>0.0</Longitude>
+				</EmbeddedObjectPresentation>
+			</Presentation>
+
+		</ActiveObjectClass>
+		<!--   =========   Active Object Class   ========  -->
+		<ActiveObjectClass>
+			<Id>1665162382951</Id>
+			<Name><![CDATA[YaguareteHembra]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<Generic>false</Generic>
+			<GenericParameter>
+				<Id>1665162382949</Id>
+				<Name><![CDATA[1665162382949]]></Name>
+				<GenericParameterValue Class="CodeValue">
+					<Code><![CDATA[T extends Agent]]></Code>
+				</GenericParameterValue>
+				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
+			</GenericParameter>
+			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<SamplesToKeep>100</SamplesToKeep>
+			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+			<ElementsLimitValue>100</ElementsLimitValue>
+			<MakeDefaultViewArea>true</MakeDefaultViewArea>
+			<SceneGridColor/>
+			<SceneBackgroundColor/>
+			<SceneSkybox>null</SceneSkybox>
+			<AgentProperties>
+	 			<SpaceType>CONTINUOUS</SpaceType>			
+				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+				<RotateAnimationVertically>false</RotateAnimationVertically>
+				<VelocityCode Class="CodeUnitValue">
+					<Code><![CDATA[0.00001]]></Code>
+					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+				</VelocityCode>
+				<AfterStepCode><![CDATA[if( ! isMoving() )
+	error( "Not moving!" );
+
+Main m = main;
+
+//whare am I?
+double x = getX();
+double y = getY();
+int c = min( max( 0, (int)(x/5) ), 99 );
+int r = min( max( 0, (int)(y/5) ), 99 );
+
+//drink if thirsty if in water
+if( thirsty && m.altitude[c][r] < 0 )
+	behavior.receiveMessage( "Drink" );
+
+//demolish trees at current cell, if any
+if( m.vegetation[c][r] > 10000 ) 
+	m.vegetation[c][r] -= 10000;
+	
+//avoid bounds and water, change direction if needed
+if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
+	stop();
+	//try new heading until find a valid one
+	double heading;
+	double xtry, ytry;
+	int count = 0;
+	do {
+		if( count >= 100 ) {
+			error( "Cound not find way out!" );
+		}
+		heading = uniform( -Math.PI, Math.PI );
+		xtry = x + 10 * cos( heading );
+		ytry = y + 10 * sin( heading );
+		count++;
+	} while( xtry < 0 || xtry >= 500 || ytry < 0 || ytry >= 500 || m.altitude[(int)(xtry/5)][(int)(ytry/5)] < 0 );
+	//and start moving in the new direction to a virtual distant target - this will be stopped by the newDir event
+	moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );
+}]]></AfterStepCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
+			</AgentProperties>
+			<EnvironmentProperties>
+					<EnableSteps>false</EnableSteps>
+					<StepDurationCode Class="CodeUnitValue">
+						<Code><![CDATA[1.0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</StepDurationCode>
+					<SpaceType>CONTINUOUS</SpaceType>
+					<WidthCode><![CDATA[500]]></WidthCode>
+					<HeightCode><![CDATA[500]]></HeightCode>
+					<ZHeightCode><![CDATA[0]]></ZHeightCode>
+					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[100]]></RowsCountCode>
+					<NeigborhoodType>MOORE</NeigborhoodType>
+					<LayoutType>USER_DEF</LayoutType>
+					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
+					<NetworkType>USER_DEF</NetworkType>
+					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
+					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+					<MCode><![CDATA[10]]></MCode>
+			</EnvironmentProperties>
+			<DatasetsCreationProperties>
+				<AutoCreate>true</AutoCreate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1665216000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+			</DatasetsCreationProperties>
+			<ScaleRuler>
+				<Id>1665162382947</Id>
+				<Name><![CDATA[scale]]></Name>
+				<X>0</X><Y>-150</Y>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>false</PresentationFlag>
+				<ShowLabel>false</ShowLabel>
+				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+				<Length>100</Length>
+				<Rotation>0</Rotation>
+				<ScaleType>BASED_ON_LENGTH</ScaleType>
+				<ModelLength>10</ModelLength>
+				<LengthUnits>METER</LengthUnits>
+				<Scale>10</Scale>
+				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+			</ScaleRuler>
+			<CurrentLevel>1665162382950</CurrentLevel>
+			<ConnectionsId>1665162382946</ConnectionsId>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1665162584394</Id>
+					<Name><![CDATA[thirsty]]></Name>
+					<X>185</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1665162382952</Id>
+					<Name><![CDATA[drinkingPeriod]]></Name>
+					<X>50</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>0</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
+			<StatechartElements>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1665162584400</Id>
+					<Name><![CDATA[FreeWandering]]></Name>
+					<X>335</X><Y>150</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="90">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="FreeWandering" ParentStateId="1665162584400">
+					<Id>1665162584404</Id>
+					<Name><![CDATA[state]]></Name>
+					<X>345</X><Y>200</Y>
+					<Label><X>0</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Properties Width="40" Height="20">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1665162584406</Id>
+					<Name><![CDATA[GoToWater]]></Name>
+					<X>345</X><Y>280</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="80" Height="20">
+						<EntryAction><![CDATA[thirsty = true;]]></EntryAction>
+						<ExitAction><![CDATA[thirsty = false;]]></ExitAction>
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
+					<Id>1665162584408</Id>
+					<Name><![CDATA[behavior]]></Name>
+					<X>375</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>20</Y></Point>
+					</Points>
+					<Properties Target="1665162584400">
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1665162584410</Id>
+					<Name><![CDATA[GotThirsty]]></Name>
+					<X>365</X><Y>240</Y>
+					<Label><X>170</X><Y>140</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>40</Y></Point>
+					</Points>
+					<IconOffset>14.0</IconOffset>
+					<Properties Source="1665162584400" Target="1665162584406" Trigger="timeout">
+						<Action><![CDATA[headingToWater();]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[uniform( 0.8 , 1.2 ) * drinkingPeriod]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA[Sample_Message]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1665162584412</Id>
+					<Name><![CDATA[DrinkWater]]></Name>
+					<X>405</X><Y>280</Y>
+					<Label><X>140</X><Y>90</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-40</Y></Point>
+					</Points>
+					<IconOffset>14.0</IconOffset>
+					<Properties Source="1665162584406" Target="1665162584400" Trigger="message">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[String]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[equalsTo]]></FilterType>
+						<EqualsExpression><![CDATA["Drink"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="FreeWandering" ParentStateId="1665162584400">
+					<Id>1665162584414</Id>
+					<Name><![CDATA[NewDir]]></Name>
+					<X>135</X><Y>110</Y>
+					<Label><X>250</X><Y>110</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>250</X><Y>100</Y></Point>
+						<Point><X>280</X><Y>100</Y></Point>
+						<Point><X>280</X><Y>70</Y></Point>
+						<Point><X>240</X><Y>70</Y></Point>
+						<Point><X>230</X><Y>90</Y></Point>
+					</Points>
+					<IconOffset>55.180339887498945</IconOffset>
+					<Properties Source="1665162584404" Target="1665162584404" Trigger="timeout">
+						<Action><![CDATA[headingRandom();]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[12]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA[Sample_Message]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="InitialStatePointer" ParentState="FreeWandering" ParentStateId="1665162584400">
+					<Id>1665162584420</Id>
+					<Name><![CDATA[initialState]]></Name>
+					<X>355</X><Y>180</Y>
+					<Label><X>235</X><Y>63</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>20</Y></Point>
+					</Points>
+					<Properties Target="1665162584404">
+					</Properties>	
+				</StatechartElement>
+			</StatechartElements>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1665162584382</Id>
+					<Name><![CDATA[headingRandom]]></Name>
+					<X>185</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//stop();
+//new velocity
+//setVelocity( main.DistrDisplacement.get() / 12 );
+setSpeed ( main.DistrDisplacement.get() / 12 / 864000 );
+//new heading
+double heading = getRotation();
+heading += main.DistrAngle.get() * ( randomTrue( 0.5 ) ? 1 : -1 );
+//move
+moveTo( getX() + 1000*cos( heading ), getY() + 1000*sin( heading ) );
+
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1665162584392</Id>
+					<Name><![CDATA[headingToWater]]></Name>
+					<X>185</X><Y>290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[stop();
+double x = getX();
+double y = getY();
+
+//find nearest water and set heading there
+double dmin = Double.POSITIVE_INFINITY;
+double heading = 0;
+for( double a = 0; a < 2 * Math.PI; a += Math.PI / 16 ) { // try 16 directions
+	for ( double d = 0; d < 750; d += 5 ) {
+		if( d >= dmin )
+			break; // we know better direction
+		int c = (int)( ( x + d * cos( a ) ) / 5 );
+		int r = (int)( ( y + d * sin( a ) ) / 5 );
+		if( c < 0 || 100 <= c || r < 0 || 100 <= r )
+			break; // this is outside the area
+		if( main.altitude[c][r] < 0 ) {
+			dmin = d;
+			heading = a;
+			break;
+		}
+	}
+}      
+//fixed high velocity
+setSpeed( 5.0 / 10 / 86400, MPS );
+
+//and start moving in the new direction to a virtual distant target - this will be stopped by the drink event
+moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
+				</Function>
+			</Functions>
+			<AgentLinks>
+				<AgentLink>
+					<Id>1665162382946</Id>
+					<Name><![CDATA[connections]]></Name>
+					<X>50</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentLinkBidirectional>true</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<StatechartReference>
+						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<ClassName><![CDATA[YaguareteHembra]]></ClassName>
+						<ItemName><![CDATA[behavior]]></ItemName>
+					</StatechartReference>
+					<LineStyle>SOLID</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
+			</AgentLinks>
+
+			<ContainerLinks>
+				<ContainerLink>
+					<Id>1665164130723</Id>
+					<Name><![CDATA[main]]></Name>
+					<X>50</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+			</ContainerLinks>
+
+			<Presentation>
+				<Level>
+					<Id>1665162382950</Id>
+					<Name><![CDATA[level]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
+
+			<Presentation>
+				<Image>
+					<Id>1665162433478</Id>
+					<Name><![CDATA[image]]></Name>
+					<X>-15</X><Y>-10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>30</Width>
+					<Height>20</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<ClassName><![CDATA[jaguar_hembra.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+			</Presentation>
+
+				</Level>
+			</Presentation>
 
 		</ActiveObjectClass>
 	</ActiveObjectClasses>	
@@ -2176,16 +2957,17 @@ altitudeChanged = true;]]></ActionCode>
 	<Database>
 		<Logging>false</Logging>
 		<AutoExport>false</AutoExport>
+		<ShutdownCompact>false</ShutdownCompact>
 		<ImportSettings>
 		</ImportSettings>
 		<ExportSettings>
-			<ExportExcelFilePath><![CDATA[]]></ExportExcelFilePath>
 		</ExportSettings>
 	</Database>
 	
 	<RunConfiguration ActiveObjectClassId="1151503800780">
 		<Id>1478793187019</Id>
 		<Name><![CDATA[RunConfiguration]]></Name>
+		<MaximumMemory>512</MaximumMemory>
 		<ModelTimeProperties>
 			<StopOption><![CDATA[Stop at specified time]]></StopOption>
 			<InitialDate><![CDATA[1523907841000]]></InitialDate>	
@@ -2198,7 +2980,6 @@ altitudeChanged = true;]]></ActionCode>
 			<ExecutionMode>realTimeScaled</ExecutionMode>
 			<RealTimeScale>5.0</RealTimeScale>
 			<EnableZoomAndPanning>false</EnableZoomAndPanning>
-			<Maximized>false</Maximized>
 			<EnableDeveloperPanel>false</EnableDeveloperPanel>
 			<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 		</AnimationProperties>
@@ -2221,9 +3002,8 @@ altitudeChanged = true;]]></ActionCode>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
 			<VmArgs><![CDATA[]]></VmArgs>
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
-			<SnapshotFile></SnapshotFile>
 
-			<Shapes>
+			<Presentation>
 				<Rectangle>
 					<Id>1160252975870</Id>
 					<Name><![CDATA[rect]]></Name>
@@ -2303,7 +3083,10 @@ altitudeChanged = true;]]></ActionCode>
 					<Height>59</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
-						<ImageFile><![CDATA[anylogic_logo.png]]></ImageFile>
+						<ImageResourceReference>
+							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<ClassName><![CDATA[anylogic_logo.png]]></ClassName>
+						</ImageResourceReference>
 					</ImageFiles>
 					<OriginalSize>true</OriginalSize>
 				</Image>
@@ -2554,11 +3337,14 @@ dynamically changing raster or vector maps.]]></Text>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-			</Shapes>
+			</Presentation>
 
 			<Parameters>			
 				<Parameter>
-					<ParameterName><![CDATA[NumberOfElephants]]></ParameterName>
+					<ParameterName><![CDATA[NumeroMachos]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[NumeroHembras]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
@@ -2576,8 +3362,29 @@ dynamically changing raster or vector maps.]]></Text>
 				<FinalDate><![CDATA[1532547841000]]></FinalDate>	
 				<FinalTime><![CDATA[100.0]]></FinalTime>	
 			</ModelTimeProperties>
+			<BypassInitialScreen>false</BypassInitialScreen>
 		</SimulationExperiment>	
 	</Experiments>
+	<ModelResources>
+		<Resource>
+			<Path><![CDATA[anylogic_logo.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[jaguar_macho.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[jaguar_hembra.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+	</ModelResources>
+    <RequiredLibraryReference>
+		<LibraryName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></LibraryName>
+		<VersionMajor>1</VersionMajor>
+		<VersionMinor>0</VersionMinor>
+		<VersionBuild>0</VersionBuild>
+    </RequiredLibraryReference>
 	<CloudModelUuid><![CDATA[9de613af-a915-42f6-966f-ff3bbc2a3f17]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
