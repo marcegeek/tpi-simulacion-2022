@@ -618,7 +618,7 @@ posicionarYaguaretes();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1151532680827</Id>
 					<Name><![CDATA[altcolor]]></Name>
-					<X>-150</X><Y>150</Y>
+					<X>-350</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -678,7 +678,7 @@ posicionarYaguaretes();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1152393280818</Id>
 					<Name><![CDATA[viewVegetation]]></Name>
-					<X>-150</X><Y>200</Y>
+					<X>-350</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -748,6 +748,32 @@ posicionarYaguaretes();]]></StartupCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1665162658866</Id>
+							<Name><![CDATA[null]]></Name>
+							<Label><![CDATA[Number of elephants]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1665417743397</Id>
+					<Name><![CDATA[NumeroCrias]]></Name>
+					<X>-580</X><Y>430</Y>
+					<Label><X>14</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1665417743395</Id>
 							<Name><![CDATA[null]]></Name>
 							<Label><![CDATA[Number of elephants]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -827,7 +853,7 @@ for( int i=0; i<100; i++ )
 					<ReturnType><![CDATA[Color]]></ReturnType>
 					<Id>1151530867310</Id>
 					<Name><![CDATA[altitudeToColor]]></Name>
-					<X>-150</X><Y>50</Y>
+					<X>-350</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -897,6 +923,18 @@ for( YaguareteHembra e : yaguaretes_hembras ) {
 	} while( altitude[(int)(x/5)][(int)(y/5)] < 0 );
 	e.jumpTo( x, y );
 	e.headingRandom();
+}
+
+for( YaguareteCria e : crias_yaguaretes ) {
+	e.stop();
+	double x = 0;
+	double y = 0;
+	do {
+		x = uniform( 500 );
+		y = uniform( 500 );
+	} while( altitude[(int)(x/5)][(int)(y/5)] < 0 );
+	e.jumpTo( x, y );
+	e.headingRandom();
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -925,7 +963,7 @@ for ( int i = 0; i < 100; i++ )
 					<ReturnType><![CDATA[Color]]></ReturnType>
 					<Id>1152392807387</Id>
 					<Name><![CDATA[vegetationToColor]]></Name>
-					<X>-150</X><Y>100</Y>
+					<X>-350</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1157,7 +1195,7 @@ if( veg < 200000 )
 				<EmbeddedObject>
 					<Id>1665164130707</Id>
 					<Name><![CDATA[yaguaretes_hembras]]></Name>
-					<X>-350</X><Y>90</Y>
+					<X>-350</X><Y>80</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1185,6 +1223,74 @@ if( veg < 200000 )
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
 						<Code><![CDATA[NumeroHembras]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1665417705450</Id>
+					<Name><![CDATA[crias_yaguaretes]]></Name>
+					<X>-350</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<PresentationId>1665417705462</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<ClassName><![CDATA[YaguareteCria]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<ClassName><![CDATA[YaguareteCria]]></ClassName>
+							<ItemName><![CDATA[1665412248558]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[drinkingPeriod]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[50]]></Code>
+							</Value>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>true</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[NumeroCrias]]></Code>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InEnvironment>true</InEnvironment>	
@@ -2457,6 +2563,25 @@ altitudeChanged = true;]]></ActionCode>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
 				</EmbeddedObjectPresentation>
+				<EmbeddedObjectPresentation>
+					<Id>1665417705462</Id>
+					<Name><![CDATA[crias_yaguaretes_presentation]]></Name>
+					<X>210</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<DrawingMode>POSITION_WITH_OFFSET</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>0.0</Latitude>
+					<Longitude>0.0</Longitude>
+				</EmbeddedObjectPresentation>
 			</Presentation>
 
 		</ActiveObjectClass>
@@ -2945,7 +3070,7 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 		<!--   =========   Active Object Class   ========  -->
 		<ActiveObjectClass>
 			<Id>1665412248560</Id>
-			<Name><![CDATA[YagareteCria]]></Name>
+			<Name><![CDATA[YaguareteCria]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -2970,9 +3095,47 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
 				<VelocityCode Class="CodeUnitValue">
-					<Code><![CDATA[10]]></Code>
+					<Code><![CDATA[0.0001]]></Code>
 					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 				</VelocityCode>
+				<AfterStepCode><![CDATA[if( ! isMoving() )
+	error( "Not moving!" );
+
+Main m = main;
+
+//whare am I?
+double x = getX();
+double y = getY();
+int c = min( max( 0, (int)(x/5) ), 99 );
+int r = min( max( 0, (int)(y/5) ), 99 );
+
+//drink if thirsty if in water
+if( thirsty && m.altitude[c][r] < 0 )
+	behavior.receiveMessage( "Drink" );
+
+//demolish trees at current cell, if any
+if( m.vegetation[c][r] > 10000 ) 
+	m.vegetation[c][r] -= 10000;
+	
+//avoid bounds and water, change direction if needed
+if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
+	stop();
+	//try new heading until find a valid one
+	double heading;
+	double xtry, ytry;
+	int count = 0;
+	do {
+		if( count >= 100 ) {
+			error( "Cound not find way out!" );
+		}
+		heading = uniform( -Math.PI, Math.PI );
+		xtry = x + 10 * cos( heading );
+		ytry = y + 10 * sin( heading );
+		count++;
+	} while( xtry < 0 || xtry >= 500 || ytry < 0 || ytry >= 500 || m.altitude[(int)(xtry/5)][(int)(ytry/5)] < 0 );
+	//and start moving in the new direction to a virtual distant target - this will be stopped by the newDir event
+	moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );
+}]]></AfterStepCode>
 				<PhysicalLength Class="CodeUnitValue">
 					<Code><![CDATA[1]]></Code>
 					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
@@ -3316,7 +3479,7 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 					<MessageType><![CDATA[Object]]></MessageType>
 					<StatechartReference>
 						<PackageName><![CDATA[wandering_elephants]]></PackageName>
-						<ClassName><![CDATA[YagareteCria]]></ClassName>
+						<ClassName><![CDATA[YaguareteCria]]></ClassName>
 						<ItemName><![CDATA[behavior]]></ItemName>
 					</StatechartReference>
 					<LineStyle>SOLID</LineStyle>
@@ -3328,6 +3491,21 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 				</AgentLink>
 			</AgentLinks>
 
+			<ContainerLinks>
+				<ContainerLink>
+					<Id>1665417705485</Id>
+					<Name><![CDATA[main]]></Name>
+					<X>50</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+			</ContainerLinks>
 
 			<Presentation>
 				<Level>
@@ -3344,9 +3522,9 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 
 			<Presentation>
 				<Image>
-					<Id>1665412468037</Id>
+					<Id>1665429047998</Id>
 					<Name><![CDATA[image]]></Name>
-					<X>-15</X><Y>-10</Y>
+					<X>-15</X><Y>-8</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3354,13 +3532,13 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Width>31</Width>
-					<Height>21</Height>
+					<Width>30</Width>
+					<Height>17</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
 							<PackageName><![CDATA[wandering_elephants]]></PackageName>
-							<ClassName><![CDATA[jaguar_cria.jpg]]></ClassName>
+							<ClassName><![CDATA[1227885-middle.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
@@ -3775,6 +3953,9 @@ dynamically changing raster or vector maps.]]></Text>
 				<Parameter>
 					<ParameterName><![CDATA[NumeroHembras]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[NumeroCrias]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>false</EnableZoomAndPanning>
@@ -3808,7 +3989,7 @@ dynamically changing raster or vector maps.]]></Text>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[jaguar_cria.jpg]]></Path>
+			<Path><![CDATA[1227885-middle.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
