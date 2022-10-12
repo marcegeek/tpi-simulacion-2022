@@ -437,6 +437,27 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 					<LineArrow>NONE</LineArrow>
 					<LineArrowPosition>END</LineArrowPosition>
 				</AgentLink>
+				<AgentLink>
+					<Id>1665615010716</Id>
+					<Name><![CDATA[epocaCelo]]></Name>
+					<X>240</X><Y>-80</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentReferenceId>1665162382951</AgentReferenceId>
+					<AgentLinkBidirectional>false</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<DrawLine>true</DrawLine>
+					<LineStyle>DASHED</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-65281</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
 			</AgentLinks>
 
 			<ContainerLinks>
@@ -505,7 +526,8 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 			<Import><![CDATA[import java.awt.image.BufferedImage;]]></Import>
 			<StartupCode><![CDATA[makeUpAltitudes();
 makeUpVegetation();
-posicionarYaguaretes();]]></StartupCode>
+posicionarYaguaretes();
+epocaDeCelo();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1412347600672</Id>
@@ -618,7 +640,7 @@ posicionarYaguaretes();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1151532680827</Id>
 					<Name><![CDATA[altcolor]]></Name>
-					<X>-150</X><Y>150</Y>
+					<X>-350</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -678,7 +700,7 @@ posicionarYaguaretes();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1152393280818</Id>
 					<Name><![CDATA[viewVegetation]]></Name>
-					<X>-150</X><Y>200</Y>
+					<X>-350</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -853,7 +875,7 @@ for( int i=0; i<100; i++ )
 					<ReturnType><![CDATA[Color]]></ReturnType>
 					<Id>1151530867310</Id>
 					<Name><![CDATA[altitudeToColor]]></Name>
-					<X>-150</X><Y>50</Y>
+					<X>-350</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -963,7 +985,7 @@ for ( int i = 0; i < 100; i++ )
 					<ReturnType><![CDATA[Color]]></ReturnType>
 					<Id>1152392807387</Id>
 					<Name><![CDATA[vegetationToColor]]></Name>
-					<X>-150</X><Y>100</Y>
+					<X>-350</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1009,6 +1031,22 @@ if( veg < 200000 )
 //vegetationDrawn = false;
       
 ]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1665615326938</Id>
+					<Name><![CDATA[epocaDeCelo]]></Name>
+					<X>-350</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for(int i = 0; i < yaguaretes_machos.size(); i++ ){
+	for(int j =0; j<yaguaretes_hembras.size(); j++){
+		yaguaretes_machos.get(i).epocaCelo.connectTo(yaguaretes_hembras(j));
+	}
+}]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -2566,7 +2604,7 @@ altitudeChanged = true;]]></ActionCode>
 				<EmbeddedObjectPresentation>
 					<Id>1665417705462</Id>
 					<Name><![CDATA[crias_yaguaretes_presentation]]></Name>
-					<X>220</X><Y>70</Y>
+					<X>210</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2724,7 +2762,7 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 				<Variable Class="PlainVariable">
 					<Id>1665162584394</Id>
 					<Name><![CDATA[thirsty]]></Name>
-					<X>185</X><Y>210</Y>
+					<X>60</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2733,10 +2771,41 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 						<Type><![CDATA[boolean]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1665616883723</Id>
+					<Name><![CDATA[celo]]></Name>
+					<X>60</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1665616952791</Id>
+					<Name><![CDATA[embarazada]]></Name>
+					<Unit></Unit> 
+					<X>60</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1665162382952</Id>
 					<Name><![CDATA[drinkingPeriod]]></Name>
-					<X>50</X><Y>50</Y>
+					<X>60</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2813,7 +2882,7 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 					<Id>1665162584410</Id>
 					<Name><![CDATA[GotThirsty]]></Name>
 					<X>365</X><Y>240</Y>
-					<Label><X>170</X><Y>140</Y></Label>
+					<Label><X>-90</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -2844,7 +2913,7 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 					<Id>1665162584412</Id>
 					<Name><![CDATA[DrinkWater]]></Name>
 					<X>405</X><Y>280</Y>
-					<Label><X>140</X><Y>90</Y></Label>
+					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -2926,7 +2995,7 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < 0 ) {
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1665162584382</Id>
 					<Name><![CDATA[headingRandom]]></Name>
-					<X>185</X><Y>260</Y>
+					<X>50</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2948,7 +3017,7 @@ moveTo( getX() + 1000*cos( heading ), getY() + 1000*sin( heading ) );
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1665162584392</Id>
 					<Name><![CDATA[headingToWater]]></Name>
-					<X>185</X><Y>290</Y>
+					<X>50</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2980,6 +3049,17 @@ setSpeed( 5.0 / 10 / 86400, MPS );
 
 //and start moving in the new direction to a virtual distant target - this will be stopped by the drink event
 moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1665617215531</Id>
+					<Name><![CDATA[inicioCelo]]></Name>
+					<X>50</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
 				</Function>
 			</Functions>
 			<AgentLinks>
