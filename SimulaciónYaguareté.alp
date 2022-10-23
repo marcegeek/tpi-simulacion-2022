@@ -3696,7 +3696,7 @@ moveTo( getX() + 1000*cos( heading ), getY() + 1000*sin( heading ) );
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-7765933</Color>
-					<Text><![CDATA[Wandering Elephants]]></Text>
+					<Text><![CDATA[Reintroducción de yaguaretés]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>48</Size>
@@ -3704,53 +3704,10 @@ moveTo( getX() + 1000*cos( heading ), getY() + 1000*sin( heading ) );
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Text>
-					<Id>1160253554873</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>40</X><Y>30</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-1331</Color>
-					<Text><![CDATA[Wandering Elephants]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>48</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Image>
-					<Id>1173549142733</Id>
-					<Name><![CDATA[image]]></Name>
-					<X>50</X><Y>500</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>302</Width>
-					<Height>59</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
-							<ClassName><![CDATA[anylogic_logo.png]]></ClassName>
-						</ImageResourceReference>
-					</ImageFiles>
-					<OriginalSize>true</OriginalSize>
-				</Image>
 				<Text>
 					<Id>1174379887478</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>40</X><Y>110</Y>
+					<X>380</X><Y>110</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3760,132 +3717,49 @@ moveTo( getX() + 1000*cos( heading ), getY() + 1000*sin( heading ) );
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16</Color>
-					<Text><![CDATA[A number of elephants live in
-the area 100 by 100 kilometers.
-There are two layers of geo-
-graphical information: altitude
-and vegetation (you can switch
-between them). Elephants
-randomly wander in the area,
-but every once in a while they
-get thirsty and go to the nearest
-lake to drink water. As elephants
-walk, they demolish vegetation
-with a certain rate. Vegetation
-regenerates, but it can never
-exceed a natural maximum that
-depends on the altitude. A new
-landscapes are generated each
-time you restart the model.
-]]></Text>
+					<Text><![CDATA[Dada una cantidad arbitraria de yaguaretés,
+el modelo de simulación buscará encontrar 
+la opción más óptima para la reinserción de 
+los mismos en una área con sus respectivos
+parámetros de amenazas, presas y reproducción.
+Se realizarán un mínimo de 30 corridas donde
+a través de estimaciones probabilísticas se 
+analizará el crecimiento poblacional de la especie
+en diversas áreas en estudio, siguiendo parámetros
+específicos.]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>11</Size>
+						<Size>18</Size>
 						<Style>0</Style>
 					</Font>
-					<Alignment>LEFT</Alignment>
+					<Alignment>CENTER</Alignment>
 				</Text>
-				<Polyline>
-					<Id>1182877699453</Id>
-					<Name><![CDATA[polyline]]></Name>
-					<X>330</X><Y>370</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+				<Image>
+					<Id>1666569020394</Id>
+					<Name><![CDATA[image1]]></Name>
+					<X>240</X><Y>350</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<FillColor>-23296</FillColor>
-					<FillMaterial>null</FillMaterial>
-					<Points>
-					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>30</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>30</X><Y>-40</Y><Z>0</Z></Point>
-					   <Point><X>40</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>70</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>60</X><Y>-50</Y><Z>0</Z></Point>
-					   <Point><X>110</X><Y>-40</Y><Z>0</Z></Point>
-					   <Point><X>160</X><Y>-50</Y><Z>0</Z></Point>
-					   <Point><X>157</X><Y>-1</Y><Z>0</Z></Point>
-					   <Point><X>180</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>185</X><Y>-21</Y><Z>0</Z></Point>
-					   <Point><X>191</X><Y>1</Y><Z>0</Z></Point>
-					   <Point><X>222</X><Y>1</Y><Z>0</Z></Point>
-					   <Point><X>205</X><Y>-76</Y><Z>0</Z></Point>
-					   <Point><X>213</X><Y>-88</Y><Z>0</Z></Point>
-					   <Point><X>226</X><Y>-107</Y><Z>0</Z></Point>
-					   <Point><X>243</X><Y>-107</Y><Z>0</Z></Point>
-					   <Point><X>256</X><Y>-103</Y><Z>0</Z></Point>
-					   <Point><X>268</X><Y>-102</Y><Z>0</Z></Point>
-					   <Point><X>283</X><Y>-100</Y><Z>0</Z></Point>
-					   <Point><X>302</X><Y>-103</Y><Z>0</Z></Point>
-					   <Point><X>297</X><Y>-106</Y><Z>0</Z></Point>
-					   <Point><X>300</X><Y>-112</Y><Z>0</Z></Point>
-					   <Point><X>284</X><Y>-110</Y><Z>0</Z></Point>
-					   <Point><X>271</X><Y>-112</Y><Z>0</Z></Point>
-					   <Point><X>258</X><Y>-121</Y><Z>0</Z></Point>
-					   <Point><X>269</X><Y>-123</Y><Z>0</Z></Point>
-					   <Point><X>280</X><Y>-129</Y><Z>0</Z></Point>
-					   <Point><X>264</X><Y>-129</Y><Z>0</Z></Point>
-					   <Point><X>251</X><Y>-133</Y><Z>0</Z></Point>
-					   <Point><X>244</X><Y>-147</Y><Z>0</Z></Point>
-					   <Point><X>237</X><Y>-162</Y><Z>0</Z></Point>
-					   <Point><X>225</X><Y>-178</Y><Z>0</Z></Point>
-					   <Point><X>205</X><Y>-187</Y><Z>0</Z></Point>
-					   <Point><X>187</X><Y>-189</Y><Z>0</Z></Point>
-					   <Point><X>157</X><Y>-180</Y><Z>0</Z></Point>
-					   <Point><X>146</X><Y>-163</Y><Z>0</Z></Point>
-					   <Point><X>128</X><Y>-154</Y><Z>0</Z></Point>
-					   <Point><X>112</X><Y>-151</Y><Z>0</Z></Point>
-					   <Point><X>76</X><Y>-157</Y><Z>0</Z></Point>
-					   <Point><X>38</X><Y>-156</Y><Z>0</Z></Point>
-					   <Point><X>22</X><Y>-148</Y><Z>0</Z></Point>
-					   <Point><X>3</X><Y>-133</Y><Z>0</Z></Point>
-					   <Point><X>-28</X><Y>-137</Y><Z>0</Z></Point>
-					   <Point><X>-42</X><Y>-157</Y><Z>0</Z></Point>
-					   <Point><X>-30</X><Y>-130</Y><Z>0</Z></Point>
-					   <Point><X>-1</X><Y>-124</Y><Z>0</Z></Point>
-					   <Point><X>-3</X><Y>-98</Y><Z>0</Z></Point>
-					   <Point><X>0</X><Y>-70</Y><Z>0</Z></Point>
-					</Points>
-					<Closed>true</Closed>
-				</Polyline>
-				<Oval>
-					<Id>1182878171921</Id>
-					<Name><![CDATA[oval]]></Name>
-					<X>553</X><Y>230</Y>
-					<Label><X>0</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<RadiusX>6</RadiusX>
-					<RadiusY>4</RadiusY>
-					<Rotation>325.555</Rotation>
-					<FillColor>-5952982</FillColor>
-					<FillMaterial>null</FillMaterial>
-				</Oval>
+					<Width>300</Width>
+					<Height>180</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<ClassName><![CDATA[image1.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
 				<Polyline>
 					<Id>1182878277640</Id>
 					<Name><![CDATA[polyline1]]></Name>
-					<X>280</X><Y>380</Y>
+					<X>230</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3915,7 +3789,7 @@ time you restart the model.
 					   <Point><X>71</X><Y>-36</Y><Z>0</Z></Point>
 					   <Point><X>76</X><Y>-14</Y><Z>0</Z></Point>
 					   <Point><X>99</X><Y>-43</Y><Z>0</Z></Point>
-					   <Point><X>124</X><Y>-11</Y><Z>0</Z></Point>
+					   <Point><X>120</X><Y>-20</Y><Z>0</Z></Point>
 					   <Point><X>123</X><Y>-46</Y><Z>0</Z></Point>
 					   <Point><X>133</X><Y>-18</Y><Z>0</Z></Point>
 					   <Point><X>143</X><Y>-46</Y><Z>0</Z></Point>
@@ -3941,59 +3815,6 @@ time you restart the model.
 					</Points>
 					<Closed>true</Closed>
 				</Polyline>
-				<Polyline>
-					<Id>1182878370296</Id>
-					<Name><![CDATA[polyline2]]></Name>
-					<X>473</X><Y>209</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>3</LineWidth>
-					<LineColor>-5952982</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<FillColor/>
-					<FillMaterial>null</FillMaterial>
-					<Points>
-					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-					   <Point><X>-12</X><Y>16</Y><Z>0</Z></Point>
-					   <Point><X>7</X><Y>45</Y><Z>0</Z></Point>
-					   <Point><X>44</X><Y>68</Y><Z>0</Z></Point>
-					   <Point><X>51</X><Y>38</Y><Z>0</Z></Point>
-					</Points>
-					<Closed>false</Closed>
-				</Polyline>
-				<Text>
-					<Id>1182879882594</Id>
-					<Name><![CDATA[text4]]></Name>
-					<X>280</X><Y>390</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16751872</Color>
-					<Text><![CDATA[This model also demonstrates a very efficient way of displaying large
-dynamically changing raster or vector maps.]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>11</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 			</Presentation>
 
 			<Parameters>			
@@ -4024,10 +3845,6 @@ dynamically changing raster or vector maps.]]></Text>
 	</Experiments>
 	<ModelResources>
 		<Resource>
-			<Path><![CDATA[anylogic_logo.png]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-		</Resource>
-		<Resource>
 			<Path><![CDATA[jaguar_macho.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
@@ -4037,6 +3854,10 @@ dynamically changing raster or vector maps.]]></Text>
 		</Resource>
 		<Resource>
 			<Path><![CDATA[1227885-middle.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[image1.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
