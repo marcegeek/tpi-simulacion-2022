@@ -404,9 +404,7 @@ for( double a = 0; a < 2 * Math.PI; a += Math.PI / 16 ) { // try 16 directions
 		if( c < 0 || 100 <= c || r < 0 || 100 <= r )
 			break; // this is outside the area
 		if( main.altitude[c][r] < 0 ) {
-			dmin = d;
-			heading = a;
-			break;
+			setSpeed ( main.DistrDisplacement.get() / 17 / 864000 );
 		}
 	}
 }      
@@ -525,7 +523,8 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 			<Name><![CDATA[Main]]></Name>
 			<ClientAreaTopLeft><X>-92</X><Y>-148</Y></ClientAreaTopLeft>
 			<Import><![CDATA[import java.awt.image.BufferedImage;
-import java.util.*;]]></Import>
+import java.util.*;
+import java.util.Random;]]></Import>
 			<StartupCode><![CDATA[makeUpAltitudes();
 makeUpVegetation();
 posicionarYaguaretes();
@@ -781,6 +780,30 @@ epocaDeCelo();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1666569774814</Id>
+					<Name><![CDATA[CantidadCrias]]></Name>
+					<X>-580</X><Y>430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1666569774812</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<Events>
 				<Event>
@@ -843,24 +866,50 @@ epocaDeCelo();]]></StartupCode>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[for (YaguareteHembra h: yaguaretes_hembras){
+					<Action><![CDATA[int sexo;
+int hijas=0;
+double x,y;
+
+for (YaguareteHembra h: yaguaretes_hembras){
 	if (h.epoca_crianza == false && h.cant_hijos !=0){
 		for (int i=0; i < h.cant_hijos;i++){
-			add_yaguaretes_machos();	
+			sexo= binomial(0.5);
+			if(sexo==0){
+				add_yaguaretes_machos();
+				yaguaretes_machos(yaguaretes_machos.size()-1).stop();
+				//posiciona en el mapa
 			
-			//posiciona en el mapa
-			yaguaretes_machos(yaguaretes_machos.size()-1).stop();
-			double x = 0;
-			double y = 0;
-			do {
-				x = uniform( 500 );
-				y = uniform( 500 );
-			} while( altitude[(int)(x/5)][(int)(y/5)] < 0 );
-			yaguaretes_machos(yaguaretes_machos.size()-1).jumpTo( x, y );
-			yaguaretes_machos(yaguaretes_machos.size()-1).headingRandom();		
+				x = 0;
+				y = 0;
+				do {
+					x = uniform( 500 );
+					y = uniform( 500 );
+				} while( altitude[(int)(x/5)][(int)(y/5)] < 0 );
+				yaguaretes_machos(yaguaretes_machos.size()-1).jumpTo( x, y );
+				yaguaretes_machos(yaguaretes_machos.size()-1).headingRandom();
+			} 
+			else{
+				hijas=+1;
+			}			
 		}
 		h.cant_hijos=0;
 	}	
+}
+if (hijas!=0){
+	for (int i=0; i<hijas;i++){
+		add_yaguaretes_hembras();
+		yaguaretes_hembras(yaguaretes_hembras.size()-1).stop();
+		//posiciona en el mapa
+	
+		x = 0;
+		y = 0;
+		do {
+			x = uniform( 500 );
+			y = uniform( 500 );
+		} while( altitude[(int)(x/5)][(int)(y/5)] < 0 );
+		yaguaretes_hembras(yaguaretes_hembras.size()-1).jumpTo( x, y );
+		yaguaretes_hembras(yaguaretes_hembras.size()-1).headingRandom();
+	}
 }]]></Action>
 				</Event>
 			</Events>
@@ -1096,7 +1145,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 		xh = yaguaretes_hembras(j).getX();
 		yh = yaguaretes_hembras(j).getY();
 		result = Math.sqrt( Math.pow(xm-xh,2) + Math.pow(ym-yh,2));
-		if (result < 100 && yaguaretes_hembras.get(j).celo){
+		if (result < 100 && yaguaretes_hembras.get(j).celo && yaguaretes_hembras.get(j).embarazada == false && yaguaretes_hembras.get(j).epoca_crianza == false){
 			yaguaretes_machos.get(i).epocaCelo.connectTo(yaguaretes_hembras(j));
 			juntarPareja(yaguaretes_machos.get(i),yaguaretes_hembras(j));
 		}
@@ -1165,7 +1214,8 @@ double yh=hembra.getY();
 double result = Math.sqrt( Math.pow(xm-xh,2) + Math.pow(ym-yh,2));
 if (result<20){
 	macho.send("Embarazo",hembra);
-}]]></Body>
+}
+macho.headingRandom();]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -2498,6 +2548,66 @@ altitudeChanged = true;]]></ActionCode>
 						<Link>viewVegetation</Link>
 					</ExtendedProperties>
 				</Control>
+    			<BarChart>
+					<Id>1666569617590</Id>
+					<Name><![CDATA[chart]]></Name>
+					<X>1000</X><Y>70</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1666598400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[365]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[365]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>470</Width>
+					<Height>260</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>390</Width>
+						<Height>170</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>0</Id>
+					<Expression><![CDATA[yaguaretes_machos.size() + yaguaretes_hembras.size()]]></Expression>
+					<Color>-6632142</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Cantidad de yaguaretés en el área]]></Title>
+					</DataItem>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
 			</Presentation>
 
 				</Level>
@@ -3823,6 +3933,9 @@ específicos.]]></Text>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[NumeroHembras]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[CantidadCrias]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
