@@ -1040,6 +1040,30 @@ epocaDeCelo();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1666891681644</Id>
+					<Name><![CDATA[PorEdad]]></Name>
+					<X>-580</X><Y>550</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1666891681642</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1666797227354</Id>
 					<Name><![CDATA[totales]]></Name>
@@ -4895,6 +4919,9 @@ específicos.]]></Text>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[FallecidosCrianza]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[PorEdad]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
