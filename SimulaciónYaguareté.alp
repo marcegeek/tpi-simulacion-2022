@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205231125" AlpVersion="8.7.5">
 <Model>
 	<Id>1151503800779</Id>
 	<Name><![CDATA[SimulaciónYaguareté]]></Name>
@@ -59,10 +59,17 @@ int r = min( max( 0, (int)(y/5) ), 99 );
 if( thirsty && m.altitude[c][r] < 0 )
 	behavior.receiveMessage( "Drink" );
 
+/*
 //demolish trees at current cell, if any
 if( m.vegetation[c][r] > 10000 ) 
 	m.vegetation[c][r] -= 10000;
-	
+*/
+
+//marcar territorio, si no está marcado?
+//if(m.marcas[c][r].yaguarete==null || ){
+	m.marcas[c][r].yaguarete=ID;
+	m.marcas[c][r].fuerza=30;
+//}
 //avoid bounds and water, change direction if needed
 if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < -10 ) {
 	stop();
@@ -188,6 +195,21 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < -10 ) {
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[21]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1666893927812</Id>
+					<Name><![CDATA[ID]]></Name>
+					<X>50</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[java.util.UUID]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[java.util.UUID.randomUUID();]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -473,12 +495,73 @@ presas+= 7* normal(0.3,1.5);]]></Action>
 //setVelocity( main.DistrDisplacement.get() / 12 );
 setSpeed ( main.DistrDisplacement.get() / 12 / 864000 );
 //new heading
+
+// Elegir de los 8 alrededor
+java.awt.Point ubi=obtenerUbicacion();
+java.awt.Point ultimaUbicacionValida=ubi;
+java.awt.Point ubicacionesPosibles[]={
+	new java.awt.Point(ubi.x,ubi.y+1)
+	,new java.awt.Point(ubi.x+1,ubi.y+1)
+	,new java.awt.Point(ubi.x+1,ubi.y)
+	,new java.awt.Point(ubi.x+1,ubi.y-1)
+	,new java.awt.Point(ubi.x,ubi.y-1)
+	,new java.awt.Point(ubi.x-1,ubi.y-1)
+	,new java.awt.Point(ubi.x-1,ubi.y)
+	,new java.awt.Point(ubi.x-1,ubi.y+1)
+};
+java.awt.Point direcciones[]={
+	new java.awt.Point(0,1)
+	,new java.awt.Point(1,1)
+	,new java.awt.Point(1,0)
+	,new java.awt.Point(1,-1)
+	,new java.awt.Point(0,-1)
+	,new java.awt.Point(-1,-1)
+	,new java.awt.Point(-1,0)
+	,new java.awt.Point(-1,1)
+};
+int direccion=randomFrom(new Integer[]{0,1,2,3,4,5,6,7});
+int intentos=0;
+boolean decidioIr=false;
+java.awt.Point ubicacionAEvaluar=null;
+do{
+	ubicacionAEvaluar=ubicacionesPosibles[direccion];
+	if(
+		ubicacionAEvaluar.x!=-1
+		&& ubicacionAEvaluar.y!=-1
+		&& ubicacionAEvaluar.x!=100
+		&& ubicacionAEvaluar.y!=100
+		&& main.vegetation[ubicacionAEvaluar.x][ubicacionAEvaluar.y]!=-1
+	){
+		ultimaUbicacionValida=ubicacionAEvaluar;
+		Marca marcaEncontrada=main.marcas[ubicacionAEvaluar.x][ubicacionAEvaluar.y];
+		//System.out.println(marcaEncontrada.fuerza);
+		if(marcaEncontrada.fuerza==0 || marcaEncontrada.yaguarete.compareTo(ID)==0){
+			decidioIr=true;
+			break;
+		}else{
+			decidioIr=randomFalse(marcaEncontrada.fuerza/30);
+		}
+	}
+	
+	intentos++;
+	direccion++;
+	if(direccion==8)
+		direccion=0;
+}while(!decidioIr && intentos<8);
+
+//System.out.println("X ac: "+ubi.x+" Y ac: "+ubi.y+"dir: "+direccion+" X: "+ubicacionAEvaluar.x+" Y: "+ubicacionAEvaluar.y);
+//if(direccion==0)
+	//direccion=8;
+System.out.println("X:" +direcciones[direccion].x+" Y: "+direcciones[direccion].y);
+System.out.println("X:" +ubicacionAEvaluar.x+" Y: "+ubicacionAEvaluar.y);
+moveTo(ubicacionAEvaluar.x*10,ubicacionAEvaluar.y*10);
+
+/*
 double heading = getRotation();
 heading += main.DistrAngle.get() * ( randomTrue( 0.5 ) ? 1 : -1 );
 //move
 moveTo( getX() + 1000*cos( heading ), getY() + 1000*sin( heading ) );
-
-]]></Body>
+*/]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -517,6 +600,21 @@ setSpeed( 5.0 / 10 / 86400, MPS );
 
 //and start moving in the new direction to a virtual distant target - this will be stopped by the drink event
 moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[java.awt.Point]]></ReturnType>
+					<Id>1666894402282</Id>
+					<Name><![CDATA[obtenerUbicacion]]></Name>
+					<X>50</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[return new java.awt.Point(
+	min( max( 0, (int)Math.round(getX()/5) ), 99 )
+	,min( max( 0, (int)Math.round(getY()/5) ), 99 )
+);]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -630,7 +728,7 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 import java.util.*;
 import java.util.Random;]]></Import>
 			<StartupCode><![CDATA[makeUpAltitudes();
-makeUpVegetation();
+//makeUpVegetation();
 posicionarYaguaretes();
 epocaDeCelo();]]></StartupCode>
 			<Generic>false</Generic>
@@ -790,7 +888,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1152392597505</Id>
 					<Name><![CDATA[vegetation]]></Name>
-					<X>-580</X><Y>250</Y>
+					<X>-780</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -844,6 +942,21 @@ epocaDeCelo();]]></StartupCode>
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1666893220860</Id>
+					<Name><![CDATA[marcas]]></Name>
+					<X>-780</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[Marca[][]]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new Marca[100][100]]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1547,7 +1660,13 @@ if( alt < 65 )
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for( YaguareteMacho e : yaguaretes_machos ) {
+					<Body><![CDATA[for(int x=0;x<100;x++){
+	for(int y=0;y<100;y++){
+		marcas[x][y]=new Marca();
+	}
+}
+
+for( YaguareteMacho e : yaguaretes_machos ) {
 	e.stop();
 	double x = 0;
 	double y = 0;
@@ -1578,7 +1697,7 @@ for( YaguareteHembra e : yaguaretes_hembras ) {
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1152392648769</Id>
 					<Name><![CDATA[makeUpVegetation]]></Name>
-					<X>-580</X><Y>80</Y>
+					<X>-780</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1743,7 +1862,33 @@ Embarazos=0;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[double xm, ym, xh, yh, result;
+					<Body><![CDATA[HashMap<Marca,YaguareteMacho> posiciones=new HashMap<>();
+
+ArrayList<YaguareteMacho> eliminados=new ArrayList<>(); 
+
+for(YaguareteMacho ym:yaguaretes_machos){
+	java.awt.Point ubicacion=ym.obtenerUbicacion();
+	Marca marcaDeLaUbicacion=marcas[ubicacion.x][ubicacion.y];
+	YaguareteMacho otroYaguarete=posiciones.get(marcaDeLaUbicacion);
+	if(otroYaguarete!=null){
+		if(randomTrue(0.5)){ // este gana
+			eliminados.add(otroYaguarete);
+			marcaDeLaUbicacion.fuerza=30;
+			marcaDeLaUbicacion.yaguarete=ym.ID;
+			posiciones.put(marcaDeLaUbicacion,ym);
+		}else eliminados.add(ym);
+	}
+}
+
+for(int x=0;x<100;x++){
+	for(int y=0;y<100;y++){
+		if(posiciones.get(marcas[x][y])==null){
+			marcas[x][y].fuerza--;
+		}
+	}
+}
+
+/*
 for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 	for(int j =1; j<yaguaretes_machos.size(); j++){
 		xm = yaguaretes_machos(i).getX();
@@ -1757,7 +1902,29 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 			
 		}
 	}
-}]]></Body>
+}
+
+for(int i=0;i<100;i++){
+	for(int j=0;j<100;j++){
+		if()
+	}
+}
+
+double xm, ym, xh, yh, result;
+for(int i = 0; i < yaguaretes_machos.size(); i++ ){
+	for(int j =1; j<yaguaretes_machos.size(); j++){
+		xm = yaguaretes_machos(i).getX();
+		ym = yaguaretes_machos(i).getY();
+		xh = yaguaretes_machos(j).getX();
+		yh = yaguaretes_machos(j).getY();
+		result = Math.sqrt( Math.pow(xm-xh,2) + Math.pow(ym-yh,2));
+		if (result < 2000){
+			yaguaretes_machos(i).headingRandom();
+			yaguaretes_machos(j).headingRandom();
+			
+		}
+	}
+}*/]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -3448,6 +3615,7 @@ if( x < 0 || x >= 500 || y < 0 || y >= 500 || m.altitude[c][r] < -10 ) {
 		count++;
 	} while( xtry < 0 || xtry >= 500 || ytry < 0 || ytry >= 500 || m.altitude[(int)(xtry/5)][(int)(ytry/5)] < -10 );
 	//and start moving in the new direction to a virtual distant target - this will be stopped by the newDir event
+	System.out.println((x + 1000*cos( heading ))+" - "+ (y + 1000*sin( heading ) ));
 	moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );
 }]]></AfterStepCode>
 				<PhysicalLength Class="CodeUnitValue">
@@ -4942,6 +5110,31 @@ específicos.]]></Text>
 			<BypassInitialScreen>false</BypassInitialScreen>
 		</SimulationExperiment>	
 	</Experiments>
+	<JavaClasses>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1666893632109</Id>
+			<Name><![CDATA[Marca]]></Name>
+			<Text><![CDATA[import java.util.UUID;
+
+/**
+ * Marca
+ */	
+public class Marca implements Serializable {
+
+	public int fuerza = 0;
+
+	public UUID yaguarete = null;
+
+	/**
+	 * This number is here for model snapshot storing purpose<br>
+	 * It needs to be changed when this class gets changed
+	 */ 
+	private static final long serialVersionUID = 1L;
+
+}]]></Text>
+		</JavaClass>
+	</JavaClasses>
 	<ModelResources>
 		<Resource>
 			<Path><![CDATA[jaguar_macho.png]]></Path>
