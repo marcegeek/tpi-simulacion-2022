@@ -1,40 +1,4 @@
-\documentclass{article}
-
-\usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
-\usepackage{booktabs}       % professional-quality tables
-\usepackage{amsfonts}       % blackboard math symbols
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypography
-\usepackage{lipsum}
-\usepackage{graphicx}
-\usepackage{import}
-\usepackage{float}
-\graphicspath{ {./images/} }
-
-\usepackage{subcaption}
-
-\title{Trabajo Práctico Integrador: Reintroducción del yaguareté en determinadas zonas}
-
-
-\author{
-    Abud Santiago Elias \\
-    Legajo 47015 \\
-    \texttt{ sabudvicco@gmail.com} \\
-    %% examples of more authors
-    \And
-    Castellano Marcelo \\
-    Legajo 39028 \\
-    \texttt{marce.geek22@gmail.com} \\
-    \And
-    Navarro Franco \\
-    Legajo 46387 \\
-    \texttt{franconavarro1889@gmail.com} \\}
-    
-\begin{document}
-  \maketitle
+\nocite{*} % cargar toda la bib
   \begin{abstract}
     La extinción de especies de animales en la actualidad genera impactos variados para el medio ambiente, desde la aparición de plagas hasta el desequilibrio ambiental. Uno de los grandes problemas que existen en la actualidad es la desaparición de depredadores tope el cual debido a su ausencia, el ecosistema donde residía tuvo un aumento de población de otras especies llegando a valores extremos y provocando el cambio del mismo. Ante esto se buscó resolver esta problemática a través de una técnica llamada “Rewilding” que consiste en la inserción de individuos provenientes de otras zonas en el ambiente donde estaba extinto para que este vuelva a poblar su lugar. Esto podría traer beneficios desde ambientales hasta la posibilidad de creación de parques turísticos donde la población de personas podría aprovechar esta oportunidad y crear una economía basada en el atractivo de la especie.
     En el presente estudio se buscará aplicar esta técnica con la especie animal conocida como Yaguareté o Jaguar el cual se encontraba extinto en los Esteros del Iberá (correspondiente a la provincia de Corrientes), cuyo trabajo de reinserción se está realizando actualmente. La idea principal del modelo de simulación es analizar el crecimiento de la población de esta especie según distintas variables, recreando zonas con distintas características que analizaremos en las siguientes secciones.
@@ -42,12 +6,9 @@
 
   \end{abstract}
 
-    \textbf{Keywords:} \keywords{
-     rewilding \and yaguareté \and jaguar \and ambiente \and simulación \and iberá \and felinos \and animales \and ecosistema \and biología \and puma \and medioambiente
-    }
+    \keywords{rewilding \and yaguareté \and jaguar \and ambiente \and simulación \and iberá \and felinos \and animales \and ecosistema \and biología \and puma \and medioambiente}
 
-\maketitle
-\section{Introduction}
+\section{Introducción}
     Actualmente la población del yaguareté en la Argentina cuenta con aproximadamente 250 ejemplares, los cuales están distribuidos en distintas zonas del país. Por lo que la introducción de nuevos jaguares deberá tener en cuenta diversos factores para su introducción. En el caso de estudio se supondrá que se tienen 2 zonas posibles de inserción con distintas características y se deberán repartir entre 5 y 12 individuos en estas zonas de manera que puedan hacer crecer su población en un intervalo de tiempo de 10 años, sorteando los problemas que puedan surgir. Se tiene en cuenta la territorialidad propia de la especie no se pueden poner todos los ejemplares juntos en un una sola zona o en un lugar donde se cree que puede haber otros yaguaretés salvajes debido a que puede causar peleas entre su misma especie la cual ya se encuentra muy diezmada por causa del hombre.
     
     Otro punto a tener en cuenta es que se supondrá que los individuos a insertar han pasado yá un ciclo en el cual se da por hecho que pueden vivir en un ambiente salvaje y no han provenido previamente de un lugar donde convivieron con humanos (es decir, no fueron domesticados).
@@ -168,29 +129,29 @@
         \centering
         \includegraphics{imagen1.jpg}
         \caption{Cantidad de fallecimientos, embarazos y crías en total que se desarrollaron satisfactoriamente en la época de crianza}
-        \label{fig:my_label}
+        \label{fig:fig1}
     \end{figure}
 
     \begin{figure}
         \centering
         \includegraphics{imagen2.jpg}
         \caption{Cantidad de yaguaretés hembras en comparación con cantidad de machos}
-        \label{fig:my_label}
+        \label{fig:fig2}
         
         \bigskip
     
         \centering
         \includegraphics{imagen3.jpg}
         \caption{Panel de visualización de individuos}
-        \label{fig:my_label}
+        \label{fig:fig3}
     
     \end{figure}
 
     \begin{figure}
         \centering
-        \includegraphics[width=350]{imagen4.jpg}
+        \includegraphics[width=350pt]{imagen4.jpg}
         \caption{Cantidad de individuos en el área por año}
-        \label{fig:my_label}
+        \label{fig:fig4}
     \end{figure}
 
 \section{Resultados obtenidos}
@@ -203,4 +164,3 @@
         
         
 \section{Conclusiones}
-\end{document}
