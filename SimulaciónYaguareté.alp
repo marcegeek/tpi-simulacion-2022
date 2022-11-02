@@ -1412,9 +1412,10 @@ for(int j=0;j<yaguaretes_hembras.size();j++){
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[totales.add(contador,yaguaretes_machos.size()+yaguaretes_hembras.size());
-fallecimientos.add(Fallecimientos);
-crecimientoCompleto.add(DesarrolloCompleto);
+					<Action><![CDATA[int idx = contador + NumeroSimulacion * 10;
+totales.set(idx, yaguaretes_machos.size() + yaguaretes_hembras.size());
+fallecimientos.set(idx, Fallecimientos);
+crecimientoCompleto.set(idx, DesarrolloCompleto);
 DesarrolloCompleto=0;
 contador+=1;]]></Action>
 				</Event>
