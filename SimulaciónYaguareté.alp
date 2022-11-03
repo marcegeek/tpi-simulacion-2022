@@ -1543,6 +1543,7 @@ for(int j=0;j<yaguaretes_hembras.size();j++){
 	fallecimientosHambre.get(NumeroSimulacion).set(contador, FallecidosHambre);
 	fallecimientosCrianza.get(NumeroSimulacion).set(contador, FallecidosCrianza);
 	fallecimientosPelea.get(NumeroSimulacion).set(contador, FallecidosPelea);
+	totalesEmbarazos.get(NumeroSimulacion).set(contador, Embarazos);
 	crecimientoCompleto.get(NumeroSimulacion).set(contador, DesarrolloCompleto);
 } else { // FIXME condición extraña, contador llega a 10 (solo en la primera corrida) 
 	System.out.printf("Advertencia: condición errónea -> contador=%d (NumeroSimulacion=%d), ignorando...\n", contador, NumeroSimulacion);
@@ -1979,12 +1980,12 @@ for(YaguareteMacho v:vencidos){
 exportarExcelColeccion(totalesMachos, "TotalesMachos");
 exportarExcelColeccion(totalesHembras, "TotalesHembras");
 exportarExcelColeccion(fallecimientos, "Fallecimientos");
-exportarExcelColeccion(fallecimientos, "FallecimientosEdad");
-exportarExcelColeccion(fallecimientos, "FallecimientosHambre");
-exportarExcelColeccion(fallecimientos, "FallecimientosCrianza");
-exportarExcelColeccion(fallecimientos, "FallecimientosPelea");
-exportarExcelColeccion(fallecimientos, "TotalesEmbarazos");
-exportarExcelColeccion(fallecimientos, "CrecimientoCompleto");]]></Body>
+exportarExcelColeccion(fallecimientosEdad, "FallecimientosEdad");
+exportarExcelColeccion(fallecimientosHambre, "FallecimientosHambre");
+exportarExcelColeccion(fallecimientosCrianza, "FallecimientosCrianza");
+exportarExcelColeccion(fallecimientosPelea, "FallecimientosPelea");
+exportarExcelColeccion(totalesEmbarazos, "TotalesEmbarazos");
+exportarExcelColeccion(crecimientoCompleto, "CrecimientoCompleto");]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
