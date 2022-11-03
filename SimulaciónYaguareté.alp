@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205231125" AlpVersion="8.7.5">
 <Model>
 	<Id>1151503800779</Id>
 	<Name><![CDATA[SimulaciónYaguareté]]></Name>
@@ -659,7 +659,6 @@ epocaDeCelo();]]></StartupCode>
 					<Code><![CDATA[10]]></Code>
 					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 				</VelocityCode>
-				<BeforeStepCode><![CDATA[territorialidad();]]></BeforeStepCode>
 				<PhysicalLength Class="CodeUnitValue">
 					<Code><![CDATA[1]]></Code>
 					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
@@ -847,6 +846,21 @@ epocaDeCelo();]]></StartupCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1667444426488</Id>
+					<Name><![CDATA[rutaExcelSalida]]></Name>
+					<X>-360</X><Y>800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="true" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA["datos-exportados.xlsx"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1151529818972</Id>
 					<Name><![CDATA[NumeroMachos]]></Name>
@@ -956,11 +970,12 @@ epocaDeCelo();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1666816681791</Id>
+							<Label><![CDATA[FallecidosHambre]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1064,17 +1079,41 @@ epocaDeCelo();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1666906708132</Id>
+					<Name><![CDATA[FallecidosPelea]]></Name>
+					<X>-680</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1666906708130</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1666797227354</Id>
 					<Name><![CDATA[totales]]></Name>
-					<X>-320</X><Y>560</Y>
+					<X>-350</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -1082,14 +1121,14 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1666797338939</Id>
 					<Name><![CDATA[fallecimientos]]></Name>
-					<X>-320</X><Y>590</Y>
+					<X>-350</X><Y>600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -1097,14 +1136,119 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1666889776488</Id>
 					<Name><![CDATA[crecimientoCompleto]]></Name>
-					<X>-320</X><Y>620</Y>
+					<X>-350</X><Y>720</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431003698</Id>
+					<Name><![CDATA[totalesMachos]]></Name>
+					<X>-340</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431035180</Id>
+					<Name><![CDATA[totalesHembras]]></Name>
+					<X>-340</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431090979</Id>
+					<Name><![CDATA[fallecimientosEdad]]></Name>
+					<X>-340</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431106151</Id>
+					<Name><![CDATA[fallecimientosHambre]]></Name>
+					<X>-340</X><Y>640</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431124795</Id>
+					<Name><![CDATA[fallecimientosCrianza]]></Name>
+					<X>-340</X><Y>660</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431134695</Id>
+					<Name><![CDATA[fallecimientosPelea]]></Name>
+					<X>-340</X><Y>680</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431298839</Id>
+					<Name><![CDATA[totalesEmbarazos]]></Name>
+					<X>-350</X><Y>700</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -1253,6 +1397,7 @@ FallecidosHambre=0;
 DesarrolloCompleto=0;
 Fallecimientos=0;
 FallecidosCrianza=0;
+FallecidosPelea=0;
 Embarazos=0;
 PorEdad=0;
 
@@ -1305,7 +1450,8 @@ posicionarYaguaretes();]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[finishSimulation();]]></Action>
+					<Action><![CDATA[finishSimulation();
+exportarExcel();]]></Action>
 				</Event>
 				<Event>
 					<Id>1666795383807</Id>
@@ -1388,9 +1534,20 @@ for(int j=0;j<yaguaretes_hembras.size();j++){
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[totales.add(contador,yaguaretes_machos.size()+yaguaretes_hembras.size());
-fallecimientos.add(Fallecimientos);
-crecimientoCompleto.add(DesarrolloCompleto);
+					<Action><![CDATA[if (contador < 10) {
+	totales.get(NumeroSimulacion).set(contador, yaguaretes_machos.size() + yaguaretes_hembras.size());
+	totalesMachos.get(NumeroSimulacion).set(contador, yaguaretes_machos.size());
+	totalesHembras.get(NumeroSimulacion).set(contador, yaguaretes_hembras.size());
+	fallecimientos.get(NumeroSimulacion).set(contador, Fallecimientos);
+	fallecimientosEdad.get(NumeroSimulacion).set(contador, PorEdad);
+	fallecimientosHambre.get(NumeroSimulacion).set(contador, FallecidosHambre);
+	fallecimientosCrianza.get(NumeroSimulacion).set(contador, FallecidosCrianza);
+	fallecimientosPelea.get(NumeroSimulacion).set(contador, FallecidosPelea);
+	totalesEmbarazos.get(NumeroSimulacion).set(contador, Embarazos);
+	crecimientoCompleto.get(NumeroSimulacion).set(contador, DesarrolloCompleto);
+} else { // FIXME condición extraña, contador llega a 10 (solo en la primera corrida) 
+	System.out.printf("Advertencia: condición errónea -> contador=%d (NumeroSimulacion=%d), ignorando...\n", contador, NumeroSimulacion);
+}
 DesarrolloCompleto=0;
 contador+=1;]]></Action>
 				</Event>
@@ -1423,11 +1580,47 @@ contador+=1;]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[for(int i =0;i<300;i++){
-	totales.add(0);
-	fallecimientos.add(0);
-	crecimientoCompleto.add(0);
-}]]></Action>
+					<Action><![CDATA[inicializarColeccion(totales);
+inicializarColeccion(totalesMachos);
+inicializarColeccion(totalesHembras);
+inicializarColeccion(fallecimientos);
+inicializarColeccion(fallecimientosEdad);
+inicializarColeccion(fallecimientosHambre);
+inicializarColeccion(fallecimientosCrianza);
+inicializarColeccion(fallecimientosPelea);
+inicializarColeccion(totalesEmbarazos);
+inicializarColeccion(crecimientoCompleto);]]></Action>
+				</Event>
+				<Event>
+					<Id>1666903100930</Id>
+					<Name><![CDATA[buscarPelea]]></Name>
+					<X>-580</X><Y>820</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1666944000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[territorialidad();]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -1744,20 +1937,113 @@ Embarazos=0;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[double xm, ym, xh, yh, result;
-for(int i = 0; i < yaguaretes_machos.size(); i++ ){
-	for(int j =1; j<yaguaretes_machos.size(); j++){
+ArrayList<YaguareteMacho> vencidos=new ArrayList<>();
+for(int i = 0; i < yaguaretes_machos.size()-1; i++ ){
+	for(int j =i+1; j<yaguaretes_machos.size(); j++){
+
 		xm = yaguaretes_machos(i).getX();
 		ym = yaguaretes_machos(i).getY();
 		xh = yaguaretes_machos(j).getX();
 		yh = yaguaretes_machos(j).getY();
 		result = Math.sqrt( Math.pow(xm-xh,2) + Math.pow(ym-yh,2));
-		if (result < 2000){
-			yaguaretes_machos(i).headingRandom();
-			yaguaretes_machos(j).headingRandom();
-			
+		if (result < 20){
+			if(binomial(0.30)==1){
+				Fallecimientos++;
+				FallecidosPelea++;
+				vencidos.add(randomFrom(new YaguareteMacho[]{
+					yaguaretes_machos(i)
+					,yaguaretes_machos(j)
+				}));
+			}else{
+				yaguaretes_machos(i).headingRandom();
+				yaguaretes_machos(j).headingRandom();
+			}
 		}
 	}
+}
+
+for(YaguareteMacho v:vencidos){
+	remove_yaguaretes_machos(v);
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1667423843627</Id>
+					<Name><![CDATA[exportarExcel]]></Name>
+					<X>-360</X><Y>760</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[exportarExcelColeccion(totales, "Totales");
+exportarExcelColeccion(totalesMachos, "TotalesMachos");
+exportarExcelColeccion(totalesHembras, "TotalesHembras");
+exportarExcelColeccion(fallecimientos, "Fallecimientos");
+exportarExcelColeccion(fallecimientosEdad, "FallecimientosEdad");
+exportarExcelColeccion(fallecimientosHambre, "FallecimientosHambre");
+exportarExcelColeccion(fallecimientosCrianza, "FallecimientosCrianza");
+exportarExcelColeccion(fallecimientosPelea, "FallecimientosPelea");
+exportarExcelColeccion(totalesEmbarazos, "TotalesEmbarazos");
+exportarExcelColeccion(crecimientoCompleto, "CrecimientoCompleto");]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1667440743931</Id>
+					<Name><![CDATA[inicializarColeccion]]></Name>
+					<X>-580</X><Y>900</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[coleccion]]></Name>
+						<Type><![CDATA[Object]]></Type>
+					</Parameter>
+					<Body><![CDATA[for (int i = 0; i < 30; i++) {
+	ArrayList<Integer>datosCorrida = new ArrayList<>();
+	for (int j = 0; j < 10; j++) {
+		datosCorrida.add(0);
+	}
+	((ArrayList)coleccion).add(datosCorrida);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1667443576286</Id>
+					<Name><![CDATA[exportarExcelColeccion]]></Name>
+					<X>-220</X><Y>760</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[coleccion]]></Name>
+						<Type><![CDATA[Object]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[nombreHoja]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[ArrayList<ArrayList<Integer>> coleccionArray = (ArrayList)coleccion;
+int fila = 2, columna = 2;
+for (int i = 0; i < coleccionArray.get(0).size(); i++) {
+	salidaDatos.setCellValue(i + 1, nombreHoja, fila, columna + i + 1);
+}
+for (int i = 0; i < coleccionArray.size(); i++) {
+	salidaDatos.setCellValue(i + 1, nombreHoja, fila + i + 1, columna);
+}
+fila++; columna++;
+for (int i = 0; i < coleccionArray.size(); i++) {
+	ArrayList<Integer>arr = coleccionArray.get(i);
+	for (int j = 0; j < arr.size(); j++) {
+		salidaDatos.setCellValue(arr.get(j), nombreHoja, fila + i, columna + j);
+	}
+}
+salidaDatos.setFileName(rutaExcelSalida);
+salidaDatos.writeFile();]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -1848,6 +2134,24 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 					<Value><![CDATA[0.133]]></Value>
 				</TableFunction>
 			</TableFunctions>
+			<Connectivity>
+				<ExcelFile>
+					<Id>1667423970085</Id>
+					<Name><![CDATA[salidaDatos]]></Name>
+					<X>-220</X><Y>800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<ClassName><![CDATA[datos-exportados-plantilla.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>false</SaveOnDispose>
+				</ExcelFile>
+			</Connectivity>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1412347600698</Id>
@@ -2028,7 +2332,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1170542610967</Id>
 					<Name><![CDATA[rect5]]></Name>
-					<X>0</X><Y>20</Y>
+					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2050,7 +2354,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Group>
 					<Id>1508769281843</Id>
 					<Name><![CDATA[canvasDrawGroup]]></Name>
-					<X>460</X><Y>310</Y>
+					<X>460</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2096,7 +2400,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530296629</Id>
 					<Name><![CDATA[shapeAltColorL80]]></Name>
-					<X>50</X><Y>80</Y>
+					<X>50</X><Y>40</Y>
 					<Label><X>30</X><Y>90</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2118,7 +2422,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530314174</Id>
 					<Name><![CDATA[shapeAltColorL70]]></Name>
-					<X>50</X><Y>100</Y>
+					<X>50</X><Y>60</Y>
 					<Label><X>30</X><Y>100</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2140,7 +2444,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530315236</Id>
 					<Name><![CDATA[shapeAltColorL60]]></Name>
-					<X>50</X><Y>120</Y>
+					<X>50</X><Y>80</Y>
 					<Label><X>30</X><Y>135</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2162,7 +2466,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530329176</Id>
 					<Name><![CDATA[shapeAltColorL50]]></Name>
-					<X>50</X><Y>140</Y>
+					<X>50</X><Y>100</Y>
 					<Label><X>80</X><Y>210</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2184,7 +2488,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530330748</Id>
 					<Name><![CDATA[shapeAltColorL40]]></Name>
-					<X>50</X><Y>160</Y>
+					<X>50</X><Y>120</Y>
 					<Label><X>30</X><Y>175</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2206,7 +2510,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530332170</Id>
 					<Name><![CDATA[shapeAltColorL30]]></Name>
-					<X>50</X><Y>180</Y>
+					<X>50</X><Y>140</Y>
 					<Label><X>30</X><Y>195</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2228,7 +2532,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530333542</Id>
 					<Name><![CDATA[shapeAltColorL20]]></Name>
-					<X>50</X><Y>200</Y>
+					<X>50</X><Y>160</Y>
 					<Label><X>30</X><Y>215</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2250,7 +2554,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530334974</Id>
 					<Name><![CDATA[shapeAltColorL10]]></Name>
-					<X>50</X><Y>220</Y>
+					<X>50</X><Y>180</Y>
 					<Label><X>30</X><Y>235</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2272,7 +2576,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530564835</Id>
 					<Name><![CDATA[shapeAltColorW00]]></Name>
-					<X>50</X><Y>240</Y>
+					<X>50</X><Y>200</Y>
 					<Label><X>30</X><Y>255</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2294,7 +2598,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1151530566787</Id>
 					<Name><![CDATA[shapeAltColorW10]]></Name>
-					<X>50</X><Y>260</Y>
+					<X>50</X><Y>220</Y>
 					<Label><X>30</X><Y>275</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2316,7 +2620,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152392914884</Id>
 					<Name><![CDATA[shapeVegColorSand]]></Name>
-					<X>130</X><Y>80</Y>
+					<X>130</X><Y>40</Y>
 					<Label><X>110</X><Y>140</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2338,7 +2642,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152392914885</Id>
 					<Name><![CDATA[shapeVegColor0_20000]]></Name>
-					<X>130</X><Y>140</Y>
+					<X>130</X><Y>100</Y>
 					<Label><X>160</X><Y>205</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2360,7 +2664,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152392914886</Id>
 					<Name><![CDATA[shapeVegColor20000_50000]]></Name>
-					<X>130</X><Y>160</Y>
+					<X>130</X><Y>120</Y>
 					<Label><X>110</X><Y>175</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2382,7 +2686,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152392914887</Id>
 					<Name><![CDATA[shapeVegColor50000_100000]]></Name>
-					<X>130</X><Y>180</Y>
+					<X>130</X><Y>140</Y>
 					<Label><X>110</X><Y>200</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2404,7 +2708,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152392914888</Id>
 					<Name><![CDATA[shapeVegColor100000_200000]]></Name>
-					<X>130</X><Y>200</Y>
+					<X>130</X><Y>160</Y>
 					<Label><X>110</X><Y>215</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2426,7 +2730,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152392914889</Id>
 					<Name><![CDATA[shapeVegColor200000_400000]]></Name>
-					<X>130</X><Y>220</Y>
+					<X>130</X><Y>180</Y>
 					<Label><X>110</X><Y>235</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2448,7 +2752,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152392914890</Id>
 					<Name><![CDATA[shapeVegColorWater]]></Name>
-					<X>130</X><Y>240</Y>
+					<X>130</X><Y>200</Y>
 					<Label><X>110</X><Y>255</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2470,7 +2774,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396699824</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>75</X><Y>80</Y>
+					<X>75</X><Y>40</Y>
 					<Label><X>60</X><Y>63</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2491,7 +2795,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396735746</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>75</X><Y>115</Y>
+					<X>75</X><Y>75</Y>
 					<Label><X>60</X><Y>98</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2512,7 +2816,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396744929</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>75</X><Y>155</Y>
+					<X>75</X><Y>115</Y>
 					<Label><X>60</X><Y>138</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2533,7 +2837,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396752640</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>75</X><Y>195</Y>
+					<X>75</X><Y>155</Y>
 					<Label><X>60</X><Y>178</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2554,7 +2858,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396760602</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>75</X><Y>235</Y>
+					<X>75</X><Y>195</Y>
 					<Label><X>60</X><Y>218</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2575,7 +2879,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396768403</Id>
 					<Name><![CDATA[text5]]></Name>
-					<X>75</X><Y>270</Y>
+					<X>75</X><Y>230</Y>
 					<Label><X>60</X><Y>253</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2596,7 +2900,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396831804</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>155</X><Y>80</Y>
+					<X>155</X><Y>40</Y>
 					<Label><X>140</X><Y>63</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2617,7 +2921,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396842449</Id>
 					<Name><![CDATA[text7]]></Name>
-					<X>155</X><Y>270</Y>
+					<X>155</X><Y>230</Y>
 					<Label><X>140</X><Y>253</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2638,7 +2942,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396857120</Id>
 					<Name><![CDATA[text8]]></Name>
-					<X>155</X><Y>135</Y>
+					<X>155</X><Y>95</Y>
 					<Label><X>140</X><Y>118</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2659,7 +2963,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396868487</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>155</X><Y>155</Y>
+					<X>155</X><Y>115</Y>
 					<Label><X>140</X><Y>138</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2680,7 +2984,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396869718</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>155</X><Y>175</Y>
+					<X>155</X><Y>135</Y>
 					<Label><X>140</X><Y>158</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2701,7 +3005,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396870790</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>155</X><Y>195</Y>
+					<X>155</X><Y>155</Y>
 					<Label><X>140</X><Y>178</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2722,7 +3026,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396873494</Id>
 					<Name><![CDATA[text12]]></Name>
-					<X>155</X><Y>215</Y>
+					<X>155</X><Y>175</Y>
 					<Label><X>140</X><Y>198</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2743,7 +3047,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152396875347</Id>
 					<Name><![CDATA[text13]]></Name>
-					<X>155</X><Y>235</Y>
+					<X>155</X><Y>195</Y>
 					<Label><X>140</X><Y>218</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2764,7 +3068,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152396993597</Id>
 					<Name><![CDATA[rect3]]></Name>
-					<X>40</X><Y>70</Y>
+					<X>40</X><Y>30</Y>
 					<Label><X>20</X><Y>65</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2787,7 +3091,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1152396999014</Id>
 					<Name><![CDATA[rect4]]></Name>
-					<X>120</X><Y>70</Y>
+					<X>120</X><Y>30</Y>
 					<Label><X>100</X><Y>65</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2810,7 +3114,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Text>
 					<Id>1152397880322</Id>
 					<Name><![CDATA[text14]]></Name>
-					<X>40</X><Y>45</Y>
+					<X>40</X><Y>5</Y>
 					<Label><X>690</X><Y>25</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2831,7 +3135,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Line>
 					<Id>1170542892030</Id>
 					<Name><![CDATA[line]]></Name>
-					<X>40</X><Y>60</Y>
+					<X>40</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2855,7 +3159,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<EmbeddedObjectPresentation>
 					<Id>1169335565776</Id>
 					<Name><![CDATA[yaguaretes_machos_presentation]]></Name>
-					<X>210</X><Y>60</Y>
+					<X>210</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2874,7 +3178,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1665165062716</Id>
 					<Name><![CDATA[shapeVegColorSand1]]></Name>
-					<X>130</X><Y>80</Y>
+					<X>130</X><Y>40</Y>
 					<Label><X>110</X><Y>140</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2896,7 +3200,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Rectangle>
 					<Id>1665165062718</Id>
 					<Name><![CDATA[rect6]]></Name>
-					<X>120</X><Y>70</Y>
+					<X>120</X><Y>30</Y>
 					<Label><X>100</X><Y>65</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2919,7 +3223,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Line>
 					<Id>1665165062720</Id>
 					<Name><![CDATA[line2]]></Name>
-					<X>40</X><Y>60</Y>
+					<X>40</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2943,7 +3247,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				<Line>
 					<Id>1665165062722</Id>
 					<Name><![CDATA[line3]]></Name>
-					<X>40</X><Y>330</Y>
+					<X>40</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2968,7 +3272,7 @@ for(int i = 0; i < yaguaretes_machos.size(); i++ ){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1665165062724</Id>
 					<Name><![CDATA[button1]]></Name>
-					<X>60</X><Y>300</Y>
+					<X>60</X><Y>260</Y>
 					<Label><X>200</X><Y>25</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2991,7 +3295,7 @@ altitudeChanged = true;]]></ActionCode>
     			<BarChart>
 					<Id>1666569617590</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>40</X><Y>760</Y>
+					<X>0</X><Y>750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3009,14 +3313,14 @@ altitudeChanged = true;]]></ActionCode>
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>780</Width>
+					<Width>860</Width>
 					<Height>300</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>700</Width>
+						<Width>780</Width>
 						<Height>210</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -3034,78 +3338,67 @@ altitudeChanged = true;]]></ActionCode>
 					</Labels>
 					<ShowLegend>true</ShowLegend>
 					<DataItem>
-					<Id>0</Id>
 					<Expression><![CDATA[NumeroHembras+NumeroMachos]]></Expression>
 					<Color>-6632142</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[Inicio]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(0+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(0)]]></Expression>
 					<Color>-14774017</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[1 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(1+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(1)]]></Expression>
 					<Color>-3137392</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[2 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(2+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(2)]]></Expression>
 					<Color>-32944</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[3 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(3+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(3)]]></Expression>
 					<Color>-13447886</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[4 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(4+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(4)]]></Expression>
 					<Color>-9404272</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[5 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(5+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(5)]]></Expression>
 					<Color>-7667573</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[6 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(6+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(6)]]></Expression>
 					<Color>-23296</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[7 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(7+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(7)]]></Expression>
 					<Color>-4343957</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[8 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(8+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(8)]]></Expression>
 					<Color>-12004916</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[9 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
-					<Expression><![CDATA[totales.get(9+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(9)]]></Expression>
 					<Color>-8097537</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[10]]></Title>
@@ -3121,7 +3414,7 @@ altitudeChanged = true;]]></ActionCode>
     			<TimePlot>
 					<Id>1666742938836</Id>
 					<Name><![CDATA[plot1]]></Name>
-					<X>10</X><Y>560</Y>
+					<X>0</X><Y>540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3144,10 +3437,10 @@ altitudeChanged = true;]]></ActionCode>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>280</Width>
-						<Height>80</Height>
+						<XOffset>25</XOffset>
+						<YOffset>0</YOffset>
+						<Width>310</Width>
+						<Height>120</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -3172,7 +3465,6 @@ altitudeChanged = true;]]></ActionCode>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[Fallecimientos]]></Title>
-					<Id>0</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-65536</Color>
 					<Expression2><![CDATA[Fallecimientos]]></Expression2>
@@ -3182,7 +3474,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Embarazos]]></Title>
-					<Id>0</Id>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-13447886</Color>
 					<Expression2><![CDATA[Embarazos]]></Expression2>
@@ -3192,7 +3483,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Crías Desarrolladas Satisfactoriamente]]></Title>
-					<Id>0</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-9404272</Color>
 					<Expression2><![CDATA[DesarrolloCompleto]]></Expression2>
@@ -3208,7 +3498,7 @@ altitudeChanged = true;]]></ActionCode>
     			<TimePlot>
 					<Id>1666889611840</Id>
 					<Name><![CDATA[plot2]]></Name>
-					<X>370</X><Y>560</Y>
+					<X>370</X><Y>540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3226,14 +3516,14 @@ altitudeChanged = true;]]></ActionCode>
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>260</Width>
-					<Height>210</Height>
+					<Width>360</Width>
+					<Height>200</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>180</Width>
+						<XOffset>25</XOffset>
+						<YOffset>0</YOffset>
+						<Width>310</Width>
 						<Height>120</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -3242,7 +3532,7 @@ altitudeChanged = true;]]></ActionCode>
 					<Legend>
 						<Place>SOUTH</Place>
 						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
+						<Size>60</Size>
 					</Legend>
 					<Labels>
 						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
@@ -3259,7 +3549,6 @@ altitudeChanged = true;]]></ActionCode>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[Hambre]]></Title>
-					<Id>0</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-23296</Color>
 					<Expression2><![CDATA[FallecidosHambre]]></Expression2>
@@ -3269,7 +3558,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[En Crianza]]></Title>
-					<Id>0</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-4343957</Color>
 					<Expression2><![CDATA[FallecidosCrianza]]></Expression2>
@@ -3279,10 +3567,18 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Por edad]]></Title>
-					<Id>0</Id>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-12004916</Color>
 					<Expression2><![CDATA[PorEdad]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Por pelea]]></Title>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2><![CDATA[FallecidosPelea]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
@@ -3295,7 +3591,7 @@ altitudeChanged = true;]]></ActionCode>
     			<PieChart>
 					<Id>1666890245799</Id>
 					<Name><![CDATA[chart1]]></Name>
-					<X>600</X><Y>560</Y>
+					<X>735</X><Y>540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3313,22 +3609,22 @@ altitudeChanged = true;]]></ActionCode>
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>260</Width>
-					<Height>210</Height>
+					<Width>120</Width>
+					<Height>200</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
-						<XOffset>60</XOffset>
-						<YOffset>10</YOffset>
-						<Width>140</Width>
-						<Height>140</Height>
+						<XOffset>0</XOffset>
+						<YOffset>0</YOffset>
+						<Width>120</Width>
+						<Height>120</Height>
 						<BorderColor/>
 						<GridColor>-12566464</GridColor>
 					</ChartArea>
 					<Legend>
 						<Place>SOUTH</Place>
 						<TextColor>-16777216</TextColor>
-						<Size>40</Size>
+						<Size>60</Size>
 					</Legend>
 					<Labels>
 						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
@@ -3337,14 +3633,12 @@ altitudeChanged = true;]]></ActionCode>
 					</Labels>
 					<ShowLegend>true</ShowLegend>
 					<DataItem>
-					<Id>0</Id>
 					<Expression><![CDATA[yaguaretes_machos.size()]]></Expression>
 					<Color>-14774017</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[machos]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>0</Id>
 					<Expression><![CDATA[yaguaretes_hembras.size()]]></Expression>
 					<Color>-32944</Color>
 					<Expression2Flag>true</Expression2Flag>
@@ -3357,7 +3651,7 @@ altitudeChanged = true;]]></ActionCode>
 				<EmbeddedObjectPresentation>
 					<Id>1665164130708</Id>
 					<Name><![CDATA[yaguaretes_hembras_presentation]]></Name>
-					<X>210</X><Y>60</Y>
+					<X>210</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4923,6 +5217,9 @@ específicos.]]></Text>
 				<Parameter>
 					<ParameterName><![CDATA[PorEdad]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[FallecidosPelea]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>false</EnableZoomAndPanning>
@@ -4957,6 +5254,10 @@ específicos.]]></Text>
 		</Resource>
 		<Resource>
 			<Path><![CDATA[image1.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[datos-exportados-plantilla.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
