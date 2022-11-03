@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205231125" AlpVersion="8.7.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
 <Model>
 	<Id>1151503800779</Id>
 	<Name><![CDATA[SimulaciónYaguareté]]></Name>
@@ -1082,7 +1082,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1666906708132</Id>
 					<Name><![CDATA[FallecidosPelea]]></Name>
-					<X>-680</X><Y>380</Y>
+					<X>-730</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1096,6 +1096,30 @@ epocaDeCelo();]]></StartupCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1666906708130</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1667447017165</Id>
+					<Name><![CDATA[Escenario]]></Name>
+					<X>-730</X><Y>430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1667447017163</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1419,39 +1443,8 @@ for (int l =0; l<NumeroHembras;l++){
 };
 
 NumeroSimulacion+=1;
+NumeroSimulacion=NumeroSimulacion%30;
 posicionarYaguaretes();]]></Action>
-				</Event>
-				<Event>
-					<Id>1666742816831</Id>
-					<Name><![CDATA[finalizar]]></Name>
-					<X>-580</X><Y>710</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1666771200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[109500]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</RecurrenceCode>
-						<Condition><![CDATA[false]]></Condition>
-					</Properties>
-					<Action><![CDATA[finishSimulation();
-exportarExcel();]]></Action>
 				</Event>
 				<Event>
 					<Id>1666795383807</Id>
@@ -1534,7 +1527,8 @@ for(int j=0;j<yaguaretes_hembras.size();j++){
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[if (contador < 10) {
+					<Action><![CDATA[
+if (contador < 10) {
 	totales.get(NumeroSimulacion).set(contador, yaguaretes_machos.size() + yaguaretes_hembras.size());
 	totalesMachos.get(NumeroSimulacion).set(contador, yaguaretes_machos.size());
 	totalesHembras.get(NumeroSimulacion).set(contador, yaguaretes_hembras.size());
@@ -1621,6 +1615,49 @@ inicializarColeccion(crecimientoCompleto);]]></Action>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[territorialidad();]]></Action>
+				</Event>
+				<Event>
+					<Id>1667446799377</Id>
+					<Name><![CDATA[nuevoEscenario]]></Name>
+					<X>-580</X><Y>850</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1667462400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[109500]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[109500]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[exportarExcel();
+Escenario++;
+if(Escenario==2){
+	NumeroHembras=3;
+	NumeroMachos=6;
+}
+if(Escenario==3){
+	NumeroHembras=6;
+	NumeroMachos=3;
+}
+if(Escenario==4){
+	finishSimulation();
+}]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -2028,7 +2065,7 @@ exportarExcelColeccion(crecimientoCompleto, "CrecimientoCompleto");]]></Body>
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
 					<Body><![CDATA[ArrayList<ArrayList<Integer>> coleccionArray = (ArrayList)coleccion;
-int fila = 2, columna = 2;
+int fila = 2 + (34*(Escenario-1)), columna = 2;
 for (int i = 0; i < coleccionArray.get(0).size(); i++) {
 	salidaDatos.setCellValue(i + 1, nombreHoja, fila, columna + i + 1);
 }
@@ -3338,66 +3375,77 @@ altitudeChanged = true;]]></ActionCode>
 					</Labels>
 					<ShowLegend>true</ShowLegend>
 					<DataItem>
+					<Id>1667446621944</Id>
 					<Expression><![CDATA[NumeroHembras+NumeroMachos]]></Expression>
 					<Color>-6632142</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[Inicio]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621947</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(0)]]></Expression>
 					<Color>-14774017</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[1 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621949</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(1)]]></Expression>
 					<Color>-3137392</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[2 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621950</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(2)]]></Expression>
 					<Color>-32944</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[3 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621951</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(3)]]></Expression>
 					<Color>-13447886</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[4 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621952</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(4)]]></Expression>
 					<Color>-9404272</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[5 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621953</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(5)]]></Expression>
 					<Color>-7667573</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[6 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621954</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(6)]]></Expression>
 					<Color>-23296</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[7 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621955</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(7)]]></Expression>
 					<Color>-4343957</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[8 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621956</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(8)]]></Expression>
 					<Color>-12004916</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[9 año]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621957</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(9)]]></Expression>
 					<Color>-8097537</Color>
 					<Expression2Flag>true</Expression2Flag>
@@ -3465,6 +3513,7 @@ altitudeChanged = true;]]></ActionCode>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[Fallecimientos]]></Title>
+					<Id>1667446621960</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-65536</Color>
 					<Expression2><![CDATA[Fallecimientos]]></Expression2>
@@ -3474,6 +3523,7 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Embarazos]]></Title>
+					<Id>1667446621966</Id>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-13447886</Color>
 					<Expression2><![CDATA[Embarazos]]></Expression2>
@@ -3483,6 +3533,7 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Crías Desarrolladas Satisfactoriamente]]></Title>
+					<Id>1667446621967</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-9404272</Color>
 					<Expression2><![CDATA[DesarrolloCompleto]]></Expression2>
@@ -3549,6 +3600,7 @@ altitudeChanged = true;]]></ActionCode>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[Hambre]]></Title>
+					<Id>1667446621968</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-23296</Color>
 					<Expression2><![CDATA[FallecidosHambre]]></Expression2>
@@ -3558,6 +3610,7 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[En Crianza]]></Title>
+					<Id>1667446621969</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-4343957</Color>
 					<Expression2><![CDATA[FallecidosCrianza]]></Expression2>
@@ -3567,6 +3620,7 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Por edad]]></Title>
+					<Id>1667446621970</Id>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-12004916</Color>
 					<Expression2><![CDATA[PorEdad]]></Expression2>
@@ -3576,6 +3630,7 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Por pelea]]></Title>
+					<Id>1667446621971</Id>
 					<Expression><![CDATA[my_dataset3]]></Expression>
 					<Color>-8097537</Color>
 					<Expression2><![CDATA[FallecidosPelea]]></Expression2>
@@ -3633,12 +3688,14 @@ altitudeChanged = true;]]></ActionCode>
 					</Labels>
 					<ShowLegend>true</ShowLegend>
 					<DataItem>
+					<Id>1667446621973</Id>
 					<Expression><![CDATA[yaguaretes_machos.size()]]></Expression>
 					<Color>-14774017</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[machos]]></Title>
 					</DataItem>
 					<DataItem>
+					<Id>1667446621974</Id>
 					<Expression><![CDATA[yaguaretes_hembras.size()]]></Expression>
 					<Color>-32944</Color>
 					<Expression2Flag>true</Expression2Flag>
@@ -5219,6 +5276,9 @@ específicos.]]></Text>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[FallecidosPelea]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[Escenario]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
