@@ -846,6 +846,21 @@ epocaDeCelo();]]></StartupCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1667444426488</Id>
+					<Name><![CDATA[rutaExcelSalida]]></Name>
+					<X>-360</X><Y>800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="true" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA["datos-exportados.xlsx"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1151529818972</Id>
 					<Name><![CDATA[NumeroMachos]]></Name>
@@ -955,11 +970,12 @@ epocaDeCelo();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1666816681791</Id>
+							<Label><![CDATA[FallecidosHambre]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1090,14 +1106,14 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1666797227354</Id>
 					<Name><![CDATA[totales]]></Name>
-					<X>40</X><Y>360</Y>
+					<X>-350</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -1105,14 +1121,14 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1666797338939</Id>
 					<Name><![CDATA[fallecimientos]]></Name>
-					<X>40</X><Y>390</Y>
+					<X>-350</X><Y>600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -1120,14 +1136,119 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1666889776488</Id>
 					<Name><![CDATA[crecimientoCompleto]]></Name>
-					<X>40</X><Y>420</Y>
+					<X>-350</X><Y>720</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431003698</Id>
+					<Name><![CDATA[totalesMachos]]></Name>
+					<X>-340</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431035180</Id>
+					<Name><![CDATA[totalesHembras]]></Name>
+					<X>-340</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431090979</Id>
+					<Name><![CDATA[fallecimientosEdad]]></Name>
+					<X>-340</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431106151</Id>
+					<Name><![CDATA[fallecimientosHambre]]></Name>
+					<X>-340</X><Y>640</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431124795</Id>
+					<Name><![CDATA[fallecimientosCrianza]]></Name>
+					<X>-340</X><Y>660</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431134695</Id>
+					<Name><![CDATA[fallecimientosPelea]]></Name>
+					<X>-340</X><Y>680</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1667431298839</Id>
+					<Name><![CDATA[totalesEmbarazos]]></Name>
+					<X>-350</X><Y>700</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[ArrayList<Integer>]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -1329,7 +1450,8 @@ posicionarYaguaretes();]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[finishSimulation();]]></Action>
+					<Action><![CDATA[finishSimulation();
+exportarExcel();]]></Action>
 				</Event>
 				<Event>
 					<Id>1666795383807</Id>
@@ -1412,10 +1534,19 @@ for(int j=0;j<yaguaretes_hembras.size();j++){
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[int idx = contador + NumeroSimulacion * 10;
-totales.set(idx, yaguaretes_machos.size() + yaguaretes_hembras.size());
-fallecimientos.set(idx, Fallecimientos);
-crecimientoCompleto.set(idx, DesarrolloCompleto);
+					<Action><![CDATA[if (contador < 10) {
+	totales.get(NumeroSimulacion).set(contador, yaguaretes_machos.size() + yaguaretes_hembras.size());
+	totalesMachos.get(NumeroSimulacion).set(contador, yaguaretes_machos.size());
+	totalesHembras.get(NumeroSimulacion).set(contador, yaguaretes_hembras.size());
+	fallecimientos.get(NumeroSimulacion).set(contador, Fallecimientos);
+	fallecimientosEdad.get(NumeroSimulacion).set(contador, PorEdad);
+	fallecimientosHambre.get(NumeroSimulacion).set(contador, FallecidosHambre);
+	fallecimientosCrianza.get(NumeroSimulacion).set(contador, FallecidosCrianza);
+	fallecimientosPelea.get(NumeroSimulacion).set(contador, FallecidosPelea);
+	crecimientoCompleto.get(NumeroSimulacion).set(contador, DesarrolloCompleto);
+} else { // FIXME condición extraña, contador llega a 10 (solo en la primera corrida) 
+	System.out.printf("Advertencia: condición errónea -> contador=%d (NumeroSimulacion=%d), ignorando...\n", contador, NumeroSimulacion);
+}
 DesarrolloCompleto=0;
 contador+=1;]]></Action>
 				</Event>
@@ -1448,11 +1579,16 @@ contador+=1;]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[for(int i =0;i<300;i++){
-	totales.add(0);
-	fallecimientos.add(0);
-	crecimientoCompleto.add(0);
-}]]></Action>
+					<Action><![CDATA[inicializarColeccion(totales);
+inicializarColeccion(totalesMachos);
+inicializarColeccion(totalesHembras);
+inicializarColeccion(fallecimientos);
+inicializarColeccion(fallecimientosEdad);
+inicializarColeccion(fallecimientosHambre);
+inicializarColeccion(fallecimientosCrianza);
+inicializarColeccion(fallecimientosPelea);
+inicializarColeccion(totalesEmbarazos);
+inicializarColeccion(crecimientoCompleto);]]></Action>
 				</Event>
 				<Event>
 					<Id>1666903100930</Id>
@@ -1829,6 +1965,85 @@ for(YaguareteMacho v:vencidos){
 	remove_yaguaretes_machos(v);
 }]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1667423843627</Id>
+					<Name><![CDATA[exportarExcel]]></Name>
+					<X>-360</X><Y>760</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[exportarExcelColeccion(totales, "Totales");
+exportarExcelColeccion(totalesMachos, "TotalesMachos");
+exportarExcelColeccion(totalesHembras, "TotalesHembras");
+exportarExcelColeccion(fallecimientos, "Fallecimientos");
+exportarExcelColeccion(fallecimientos, "FallecimientosEdad");
+exportarExcelColeccion(fallecimientos, "FallecimientosHambre");
+exportarExcelColeccion(fallecimientos, "FallecimientosCrianza");
+exportarExcelColeccion(fallecimientos, "FallecimientosPelea");
+exportarExcelColeccion(fallecimientos, "TotalesEmbarazos");
+exportarExcelColeccion(fallecimientos, "CrecimientoCompleto");]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1667440743931</Id>
+					<Name><![CDATA[inicializarColeccion]]></Name>
+					<X>-580</X><Y>900</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[coleccion]]></Name>
+						<Type><![CDATA[Object]]></Type>
+					</Parameter>
+					<Body><![CDATA[for (int i = 0; i < 30; i++) {
+	ArrayList<Integer>datosCorrida = new ArrayList<>();
+	for (int j = 0; j < 10; j++) {
+		datosCorrida.add(0);
+	}
+	((ArrayList)coleccion).add(datosCorrida);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1667443576286</Id>
+					<Name><![CDATA[exportarExcelColeccion]]></Name>
+					<X>-220</X><Y>760</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[coleccion]]></Name>
+						<Type><![CDATA[Object]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[nombreHoja]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[ArrayList<ArrayList<Integer>> coleccionArray = (ArrayList)coleccion;
+int fila = 2, columna = 2;
+for (int i = 0; i < coleccionArray.get(0).size(); i++) {
+	salidaDatos.setCellValue(i + 1, nombreHoja, fila, columna + i + 1);
+}
+for (int i = 0; i < coleccionArray.size(); i++) {
+	salidaDatos.setCellValue(i + 1, nombreHoja, fila + i + 1, columna);
+}
+fila++; columna++;
+for (int i = 0; i < coleccionArray.size(); i++) {
+	ArrayList<Integer>arr = coleccionArray.get(i);
+	for (int j = 0; j < arr.size(); j++) {
+		salidaDatos.setCellValue(arr.get(j), nombreHoja, fila + i, columna + j);
+	}
+}
+salidaDatos.setFileName(rutaExcelSalida);
+salidaDatos.writeFile();]]></Body>
+				</Function>
 			</Functions>
 			<TableFunctions>
 				<TableFunction AccessType="public" StaticFunction="true">
@@ -1918,6 +2133,24 @@ for(YaguareteMacho v:vencidos){
 					<Value><![CDATA[0.133]]></Value>
 				</TableFunction>
 			</TableFunctions>
+			<Connectivity>
+				<ExcelFile>
+					<Id>1667423970085</Id>
+					<Name><![CDATA[salidaDatos]]></Name>
+					<X>-220</X><Y>800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<ClassName><![CDATA[datos-exportados-plantilla.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>false</SaveOnDispose>
+				</ExcelFile>
+			</Connectivity>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1412347600698</Id>
@@ -3110,61 +3343,61 @@ altitudeChanged = true;]]></ActionCode>
 						<Title><![CDATA[Inicio]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(0+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(0)]]></Expression>
 					<Color>-14774017</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[1 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(1+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(1)]]></Expression>
 					<Color>-3137392</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[2 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(2+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(2)]]></Expression>
 					<Color>-32944</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[3 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(3+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(3)]]></Expression>
 					<Color>-13447886</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[4 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(4+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(4)]]></Expression>
 					<Color>-9404272</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[5 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(5+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(5)]]></Expression>
 					<Color>-7667573</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[6 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(6+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(6)]]></Expression>
 					<Color>-23296</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[7 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(7+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(7)]]></Expression>
 					<Color>-4343957</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[8 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(8+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(8)]]></Expression>
 					<Color>-12004916</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[9 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Expression><![CDATA[totales.get(9+NumeroSimulacion*10)]]></Expression>
+					<Expression><![CDATA[totales.get(NumeroSimulacion).get(9)]]></Expression>
 					<Color>-8097537</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[10]]></Title>
@@ -5020,6 +5253,10 @@ específicos.]]></Text>
 		</Resource>
 		<Resource>
 			<Path><![CDATA[image1.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[datos-exportados-plantilla.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
