@@ -1648,12 +1648,12 @@ inicializarColeccion(crecimientoCompleto);]]></Action>
 					<Action><![CDATA[exportarExcel();
 Escenario++;
 if(Escenario==2){
-	NumeroHembras=3;
-	NumeroMachos=6;
+	NumeroHembras=4;
+	NumeroMachos=8;
 }
 if(Escenario==3){
-	NumeroHembras=6;
-	NumeroMachos=3;
+	NumeroHembras=8;
+	NumeroMachos=4;
 }
 if(Escenario==4){
 	finishSimulation();
