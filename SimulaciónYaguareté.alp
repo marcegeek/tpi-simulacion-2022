@@ -1542,7 +1542,6 @@ if (contador < 10) {
 } else { // FIXME condición extraña, contador llega a 10 (solo en la primera corrida) 
 	System.out.printf("Advertencia: condición errónea -> contador=%d (NumeroSimulacion=%d), ignorando...\n", contador, NumeroSimulacion);
 }
-DesarrolloCompleto=0;
 contador+=1;]]></Action>
 				</Event>
 				<Event>
@@ -1984,7 +1983,7 @@ for(int i = 0; i < yaguaretes_machos.size()-1; i++ ){
 		yh = yaguaretes_machos(j).getY();
 		result = Math.sqrt( Math.pow(xm-xh,2) + Math.pow(ym-yh,2));
 		if (result < 20){
-			if(binomial(0.30)==1){
+			if(binomial(0.15)==1){
 				Fallecimientos++;
 				FallecidosPelea++;
 				vencidos.add(randomFrom(new YaguareteMacho[]{
@@ -3375,77 +3374,66 @@ altitudeChanged = true;]]></ActionCode>
 					</Labels>
 					<ShowLegend>true</ShowLegend>
 					<DataItem>
-					<Id>1667446621944</Id>
 					<Expression><![CDATA[NumeroHembras+NumeroMachos]]></Expression>
 					<Color>-6632142</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[Inicio]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621947</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(0)]]></Expression>
 					<Color>-14774017</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[1 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621949</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(1)]]></Expression>
 					<Color>-3137392</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[2 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621950</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(2)]]></Expression>
 					<Color>-32944</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[3 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621951</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(3)]]></Expression>
 					<Color>-13447886</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[4 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621952</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(4)]]></Expression>
 					<Color>-9404272</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[5 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621953</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(5)]]></Expression>
 					<Color>-7667573</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[6 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621954</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(6)]]></Expression>
 					<Color>-23296</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[7 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621955</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(7)]]></Expression>
 					<Color>-4343957</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[8 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621956</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(8)]]></Expression>
 					<Color>-12004916</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[9 año]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621957</Id>
 					<Expression><![CDATA[totales.get(NumeroSimulacion).get(9)]]></Expression>
 					<Color>-8097537</Color>
 					<Expression2Flag>true</Expression2Flag>
@@ -3513,7 +3501,6 @@ altitudeChanged = true;]]></ActionCode>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[Fallecimientos]]></Title>
-					<Id>1667446621960</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-65536</Color>
 					<Expression2><![CDATA[Fallecimientos]]></Expression2>
@@ -3523,7 +3510,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Embarazos]]></Title>
-					<Id>1667446621966</Id>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-13447886</Color>
 					<Expression2><![CDATA[Embarazos]]></Expression2>
@@ -3533,7 +3519,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Crías Desarrolladas Satisfactoriamente]]></Title>
-					<Id>1667446621967</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-9404272</Color>
 					<Expression2><![CDATA[DesarrolloCompleto]]></Expression2>
@@ -3600,7 +3585,6 @@ altitudeChanged = true;]]></ActionCode>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[Hambre]]></Title>
-					<Id>1667446621968</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-23296</Color>
 					<Expression2><![CDATA[FallecidosHambre]]></Expression2>
@@ -3610,7 +3594,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[En Crianza]]></Title>
-					<Id>1667446621969</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-4343957</Color>
 					<Expression2><![CDATA[FallecidosCrianza]]></Expression2>
@@ -3620,7 +3603,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Por edad]]></Title>
-					<Id>1667446621970</Id>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-12004916</Color>
 					<Expression2><![CDATA[PorEdad]]></Expression2>
@@ -3630,7 +3612,6 @@ altitudeChanged = true;]]></ActionCode>
 					</DatasetExpression>
 					<DatasetExpression>  
 						<Title><![CDATA[Por pelea]]></Title>
-					<Id>1667446621971</Id>
 					<Expression><![CDATA[my_dataset3]]></Expression>
 					<Color>-8097537</Color>
 					<Expression2><![CDATA[FallecidosPelea]]></Expression2>
@@ -3688,14 +3669,12 @@ altitudeChanged = true;]]></ActionCode>
 					</Labels>
 					<ShowLegend>true</ShowLegend>
 					<DataItem>
-					<Id>1667446621973</Id>
 					<Expression><![CDATA[yaguaretes_machos.size()]]></Expression>
 					<Color>-14774017</Color>
 					<Expression2Flag>true</Expression2Flag>
 						<Title><![CDATA[machos]]></Title>
 					</DataItem>
 					<DataItem>
-					<Id>1667446621974</Id>
 					<Expression><![CDATA[yaguaretes_hembras.size()]]></Expression>
 					<Color>-32944</Color>
 					<Expression2Flag>true</Expression2Flag>
