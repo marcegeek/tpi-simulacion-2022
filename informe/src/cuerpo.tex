@@ -123,19 +123,19 @@
     Además de esto se puede monitorear de manera continua distintos parámetros a través de gráficos que se encuentran en el modelo. 
     Los mismos se pueden ver a continuación:
     
-    \begin{figure}[!htb]
+    \begin{figure}[H]
         \centering
-        \includegraphics{imagen1.jpg}
+        \includegraphics{imagen1}
         \caption{Cantidad de fallecimientos, embarazos y crías en total que se desarrollaron satisfactoriamente en la época de crianza}
         \label{fig:fig1}
-        \bigskip
+    \end{figure}
+    \begin{figure}[H]
         \centering
-        \includegraphics{imagen2.jpg}
+        \includegraphics{imagen2}
         \caption{Cantidad de yaguaretés hembras en comparación con cantidad de machos}
         \label{fig:fig2}
-        \bigskip
         \centering
-        \includegraphics[width=350pt]{imagen4.jpg}
+        \includegraphics[width=350pt]{imagen4}
         \caption{Cantidad de individuos en el área por año}
         \label{fig:fig4}
     \end{figure}
@@ -146,51 +146,51 @@
 
     \subsection{Escenario 1}
 
-    \begin{figure}[!htb]
-        \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc1/dinamica}
+    \begin{figure}[H]
+        \minipage[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{esc1/dinamica}
         \caption{Cantidad de fallecimientos, embarazos y crías en total que se desarrollaron satisfactoriamente en la época de crianza}\label{fig:fig1-1}
         \endminipage\hfill
-        \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc1/genero}
+        \minipage[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{esc1/genero}
         \caption{Cantidad de yaguaretés hembras en comparación con cantidad de machos}\label{fig:fig1-2}
         \endminipage\hfill
-        \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc1/densidad}
+        \minipage[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{esc1/densidad}
         \caption{Cantidad de individuos en el área por año}\label{fig:fig1-3}
         \endminipage
     \end{figure}
 
     \subsection{Escenario 2}
 
-    \begin{figure}[!htb]
+    \begin{figure}[H]
         \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc2/dinamica}
+        \includegraphics[width=\linewidth]{esc2/dinamica}
         \caption{Cantidad de fallecimientos, embarazos y crías en total que se desarrollaron satisfactoriamente en la época de crianza}\label{fig:fig2-1}
         \endminipage\hfill
         \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc2/genero}
+        \includegraphics[width=\linewidth]{esc2/genero}
         \caption{Cantidad de yaguaretés hembras en comparación con cantidad de machos}\label{fig:fig2-2}
         \endminipage\hfill
         \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc2/densidad}
+        \includegraphics[width=\linewidth]{esc2/densidad}
         \caption{Cantidad de individuos en el área por año}\label{fig:fig2-3}
         \endminipage
     \end{figure}
 
     \subsection{Escenario 3}
 
-    \begin{figure}[!htb]
-        \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc3/dinamica}
+    \begin{figure}[H]
+        \minipage[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{esc3/dinamica}
         \caption{Cantidad de fallecimientos, embarazos y crías en total que se desarrollaron satisfactoriamente en la época de crianza}\label{fig:fig3-1}
         \endminipage\hfill
-        \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc3/genero}
+        \minipage[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{esc3/genero}
         \caption{Cantidad de yaguaretés hembras en comparación con cantidad de machos}\label{fig:fig3-2}
         \endminipage\hfill
-        \minipage{0.32\textwidth}
-        \includegraphics[width=\linewidth]{images/esc3/densidad}
+        \minipage[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{esc3/densidad}
         \caption{Cantidad de individuos en el área por año}\label{fig:fig3-3}
         \endminipage
     \end{figure}
@@ -208,24 +208,24 @@
 
             La prueba de intervalos de confianza t-apareado nos dice que el escenario 2 es peor para la supervivencia de la especie.
 
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \centering
-                \includegraphics{esc2/analisis.jpg}
+                \includegraphics{esc2/analisis}
                 \caption{Conclusión del análisis por intervalos de confianza t-apareado comparando el escenario 2 con el 1.}
-                \label{fig:fig1}
+                \label{fig:esc2-analisis}
             \end{figure}
 
             El mismo análisis nos dice que en el escenario 3 la población al finalizar la simulación tiene una media
             similar al escenario 1, lo que significa que podemos esperar resultados similares en ambas condiciones.
 
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \centering
-                \includegraphics{esc3/analisis.jpg}
+                \includegraphics{esc3/analisis}
                 \caption{Conclusión del análisis por intervalos de confianza t-apareado comparando el escenario 3 con el 1.}
-                \label{fig:fig1}
+                \label{fig:esc3-analisis}
             \end{figure}
 
-        \subsection{Intervalos de confianza 2t-muestras modificado}
+        %\subsection{Intervalos de confianza 2t-muestras modificado}
             
 \section{Conclusiones}
   Una vez revisados los resultados finales pudimos comprobar que la disposición de los individuos según su sexo es importante. En el caso en el que los machos predominan en una zona, la misma es disputada lo que si bien en nuestro modelo se representa con una mortalidad de uno de los mismos, también podría ser visto como una movilización de uno de los machos fuera de esa zona. En la actualidad una problemática que se puede notar en la extinción de la especie en nuestro país (Argentina) es la falta de espacio en donde poder vivir. La destrucción del hogar del yaguareté es un gran factor para la desaparición del mismo. En el caso del modelo nosotros como mencionamos anteriormente suponemos que es una zona en la que no tendría ese problema ya que representamos ya sea un parque nacional o un lugar alejado de la sociedad humana.
