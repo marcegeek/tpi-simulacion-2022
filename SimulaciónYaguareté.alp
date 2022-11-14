@@ -729,7 +729,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1151530012440</Id>
 					<Name><![CDATA[altitude]]></Name>
-					<X>-580</X><Y>200</Y>
+					<X>-580</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -744,7 +744,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1151532680827</Id>
 					<Name><![CDATA[altcolor]]></Name>
-					<X>-350</X><Y>330</Y>
+					<X>-350</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -759,7 +759,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1151790723762</Id>
 					<Name><![CDATA[DistrDisplacement]]></Name>
-					<X>-350</X><Y>250</Y>
+					<X>-350</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -774,7 +774,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1151790786362</Id>
 					<Name><![CDATA[DistrAngle]]></Name>
-					<X>-350</X><Y>300</Y>
+					<X>-350</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -789,7 +789,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1152392597505</Id>
 					<Name><![CDATA[vegetation]]></Name>
-					<X>-580</X><Y>250</Y>
+					<X>-580</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -804,7 +804,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1152393280818</Id>
 					<Name><![CDATA[viewVegetation]]></Name>
-					<X>-350</X><Y>270</Y>
+					<X>-350</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -819,7 +819,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1508770572138</Id>
 					<Name><![CDATA[altitudeChanged]]></Name>
-					<X>-580</X><Y>300</Y>
+					<X>-580</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -834,7 +834,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1666808616123</Id>
 					<Name><![CDATA[contador]]></Name>
-					<X>-580</X><Y>330</Y>
+					<X>-580</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -876,7 +876,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1666742550577</Id>
 					<Name><![CDATA[Fallecimientos]]></Name>
-					<X>-580</X><Y>470</Y>
+					<X>-580</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -888,7 +888,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1666816681793</Id>
 					<Name><![CDATA[FallecidosHambre]]></Name>
-					<X>-580</X><Y>450</Y>
+					<X>-580</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -900,7 +900,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1666889761088</Id>
 					<Name><![CDATA[DesarrolloCompleto]]></Name>
-					<X>-580</X><Y>490</Y>
+					<X>-580</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -936,7 +936,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1666906708132</Id>
 					<Name><![CDATA[FallecidosPelea]]></Name>
-					<X>-730</X><Y>400</Y>
+					<X>-580</X><Y>510</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -948,7 +948,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1151529818972</Id>
 					<Name><![CDATA[NumeroMachos]]></Name>
-					<X>-580</X><Y>370</Y>
+					<X>-580</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -974,7 +974,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1665162658868</Id>
 					<Name><![CDATA[NumeroHembras]]></Name>
-					<X>-580</X><Y>400</Y>
+					<X>-580</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1000,7 +1000,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1666817292477</Id>
 					<Name><![CDATA[NumeroSimulacion]]></Name>
-					<X>-580</X><Y>510</Y>
+					<X>-580</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1025,7 +1025,7 @@ epocaDeCelo();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1667447017165</Id>
 					<Name><![CDATA[Escenario]]></Name>
-					<X>-730</X><Y>430</Y>
+					<X>-580</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1202,7 +1202,7 @@ epocaDeCelo();]]></StartupCode>
 				<Event>
 					<Id>1665703205583</Id>
 					<Name><![CDATA[busquedaParejas]]></Name>
-					<X>-580</X><Y>600</Y>
+					<X>-580</X><Y>610</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1233,7 +1233,7 @@ epocaDeCelo();]]></StartupCode>
 				<Event>
 					<Id>1666395464909</Id>
 					<Name><![CDATA[posicionaAdultos]]></Name>
-					<X>-580</X><Y>640</Y>
+					<X>-580</X><Y>650</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1310,7 +1310,7 @@ if (hijas!=0){
 				<Event>
 					<Id>1666742421882</Id>
 					<Name><![CDATA[nuevaCorrida]]></Name>
-					<X>-580</X><Y>680</Y>
+					<X>-580</X><Y>690</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1369,7 +1369,7 @@ posicionarYaguaretes();]]></Action>
 				<Event>
 					<Id>1666795383807</Id>
 					<Name><![CDATA[mayoresEdad]]></Name>
-					<X>-580</X><Y>570</Y>
+					<X>-580</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1648,7 +1648,7 @@ for( int i=0; i<100; i++ )
 					<ReturnType><![CDATA[Color]]></ReturnType>
 					<Id>1151530867310</Id>
 					<Name><![CDATA[altitudeToColor]]></Name>
-					<X>-350</X><Y>380</Y>
+					<X>-349.477</X><Y>290.005</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1748,7 +1748,7 @@ for ( int i = 0; i < 100; i++ )
 					<ReturnType><![CDATA[Color]]></ReturnType>
 					<Id>1152392807387</Id>
 					<Name><![CDATA[vegetationToColor]]></Name>
-					<X>-350</X><Y>410</Y>
+					<X>-350</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -2006,7 +2006,7 @@ salidaDatos.writeFile();]]></Body>
 				<TableFunction AccessType="public" StaticFunction="true">
 					<Id>1160249050897</Id>
 					<Name><![CDATA[DisplacementTable]]></Name>
-					<X>-350</X><Y>150</Y>
+					<X>-350</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -2055,7 +2055,7 @@ salidaDatos.writeFile();]]></Body>
 				<TableFunction AccessType="public" StaticFunction="true">
 					<Id>1160249494754</Id>
 					<Name><![CDATA[AngleTable]]></Name>
-					<X>-350</X><Y>200</Y>
+					<X>-350</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
