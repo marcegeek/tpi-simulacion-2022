@@ -1327,7 +1327,7 @@ if (hijas!=0){
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1666771200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[3650]]></Code>
+							<Code><![CDATA[0]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
@@ -1447,21 +1447,16 @@ for(int j=0;j<yaguaretes_hembras.size();j++){
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[
-if (contador < 10) {
-	totales.get(NumeroSimulacion).set(contador, yaguaretes_machos.size() + yaguaretes_hembras.size());
-	totalesMachos.get(NumeroSimulacion).set(contador, yaguaretes_machos.size());
-	totalesHembras.get(NumeroSimulacion).set(contador, yaguaretes_hembras.size());
-	fallecimientos.get(NumeroSimulacion).set(contador, Fallecimientos);
-	fallecimientosEdad.get(NumeroSimulacion).set(contador, PorEdad);
-	fallecimientosHambre.get(NumeroSimulacion).set(contador, FallecidosHambre);
-	fallecimientosCrianza.get(NumeroSimulacion).set(contador, FallecidosCrianza);
-	fallecimientosPelea.get(NumeroSimulacion).set(contador, FallecidosPelea);
-	totalesEmbarazos.get(NumeroSimulacion).set(contador, Embarazos);
-	crecimientoCompleto.get(NumeroSimulacion).set(contador, DesarrolloCompleto);
-} else { // FIXME condición extraña, contador llega a 10 (solo en la primera corrida) 
-	System.out.printf("Advertencia: condición errónea -> contador=%d (NumeroSimulacion=%d), ignorando...\n", contador, NumeroSimulacion);
-}
+					<Action><![CDATA[totales.get(NumeroSimulacion).set(contador, yaguaretes_machos.size() + yaguaretes_hembras.size());
+totalesMachos.get(NumeroSimulacion).set(contador, yaguaretes_machos.size());
+totalesHembras.get(NumeroSimulacion).set(contador, yaguaretes_hembras.size());
+fallecimientos.get(NumeroSimulacion).set(contador, Fallecimientos);
+fallecimientosEdad.get(NumeroSimulacion).set(contador, PorEdad);
+fallecimientosHambre.get(NumeroSimulacion).set(contador, FallecidosHambre);
+fallecimientosCrianza.get(NumeroSimulacion).set(contador, FallecidosCrianza);
+fallecimientosPelea.get(NumeroSimulacion).set(contador, FallecidosPelea);
+totalesEmbarazos.get(NumeroSimulacion).set(contador, Embarazos);
+crecimientoCompleto.get(NumeroSimulacion).set(contador, DesarrolloCompleto);
 contador+=1;]]></Action>
 				</Event>
 				<Event>
