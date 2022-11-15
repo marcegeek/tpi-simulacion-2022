@@ -1,4 +1,4 @@
-\nocite{*} % cargar toda la bib
+%\nocite{*} % cargar toda la bib
   \begin{abstract}
     La extinción de especies de animales en la actualidad genera impactos variados para el medioambiente, desde la aparición de plagas hasta el desequilibrio ambiental. Uno de los grandes problemas que existen en la actualidad es la desaparición de depredadores tope, que por su ausencia, el ecosistema donde residía tuvo un aumento en la población de otras especies, llegando a valores extremos y provocando el cambio del mismo. Ante esto se buscó resolver esta problemática a través de una técnica llamada ``Rewilding'' que consiste en la inserción de individuos provenientes de otras zonas en el ambiente donde estaba extinto para que este vuelva a poblar su lugar. Esto podría traer beneficios desde ambientales hasta la posibilidad de la creación de parques turísticos donde la población de personas podría aprovechar esta oportunidad y crear una economía basada en el atractivo de la especie.
     En el presente estudio se buscará aplicar esta técnica con la especie animal conocida como Yaguareté o Jaguar el cual se encontraba extinto en los Esteros del Iberá (correspondiente a la provincia de Corrientes), cuyo trabajo de reinserción se está realizando actualmente. La idea principal del modelo de simulación es analizar el crecimiento de la población de esta especie según distintas variables, recreando zonas con distintas características que analizaremos en las siguientes secciones.
@@ -13,7 +13,7 @@
 \newpage
 
 \section{Definición de sistema bajo estudio}
-    Actualmente la población del yaguareté en la Argentina cuenta con aproximadamente 250 ejemplares, los cuales están distribuidos en distintas zonas del país. Por lo que la introducción de nuevos jaguares deberá tener en cuenta diversos factores para su realización. En el caso de estudio se supondrá que se tiene 1 zona posible de inserción con sus respectivas características y se deberán repartir 12 individuos de manera tal que su población crezca en estado salvaje en un intervalo de tiempo de 10 años, sorteando los problemas que puedan llegar a surgir. Se tendrán en cuenta distintos comportamientos propios de la especie, los cuales serán:
+    Actualmente la población del yaguareté en la Argentina cuenta con aproximadamente 250 ejemplares~\cite{schiaffino2011plan}, los cuales están distribuidos en distintas zonas del país. Por lo que la introducción de nuevos jaguares deberá tener en cuenta diversos factores para su realización. En el caso de estudio se supondrá que se tiene 1 zona posible de inserción con sus respectivas características y se deberán repartir 12 individuos de manera tal que su población crezca en estado salvaje en un intervalo de tiempo de 10 años, sorteando los problemas que puedan llegar a surgir. Se tendrán en cuenta distintos comportamientos propios de la especie, los cuales serán:
 
     \begin{itemize}
         \item Cacería de presas
@@ -47,7 +47,7 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
     Sus principales presas son el pecarí y la corzuela, aunque también se alimenta de carpinchos, tapires, agutíes, peces, reptiles, etc.
     
     \subsection{Reproducción y crianza}
-    Debido a que su distribución abarca zonas muy amplias, parece no tener una época fija para criar.
+    Debido a que su distribución abarca zonas muy amplias, parece no tener una época fija para criar~\cite{redyaguarete2016celo}.
     
     Luego de que un macho y una hembra se reproduzcan, la pareja se separa después de la cópula y, tras una gestación de 90 a 110 días la hembra busca una guarida donde dará a luz dos o tres cachorros, que pesan entre 600 y 900 gramos y mantienen los ojos cerrados hasta las dos semanas de vida. Su coloración es similar a la del adulto, pero parece más oscura pues las manchas son más confusas y más juntas entre sí. Puede pasar que en una misma camada nazcan cachorros manchados (pintados) y melánicos (negros).
     
@@ -58,7 +58,7 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
     El yaguareté alcanza su tamaño definitivo y su madurez sexual aproximadamente a la edad de tres años. En estado silvestre, viven hasta doce años, aunque hay algunos casos registrados recientemente de individuos más longevos. En cautiverio en cambio, pueden superar los 20 años de edad. A lo largo de toda su vida una hembra puede dar a luz entre diez y doce cachorros.
 
     \subsection{Territorialidad}
-    Sus territorios son amplios, pudiendo alcanzar hasta 30.000 hectáreas para machos adultos en zonas de condiciones de vida difíciles (alta intromisión humana, cacería, baja densidad de presas, etc), mientras que las hembras ocupan superficies menores (7-10 mil hectáreas) y se observa una gran diferencia entre diferentes tipos de ambientes.
+    Sus territorios son amplios, pudiendo alcanzar hasta 30.000 hectáreas para machos adultos en zonas de condiciones de vida difíciles (alta intromisión humana, cacería, baja densidad de presas, etc), mientras que las hembras ocupan superficies menores (7-10 mil hectáreas) y se observa una gran diferencia entre diferentes tipos de ambientes~\cite{redyaguarete2016elyaguarete}.
     
     El yaguareté es solitario. Cada macho establece su territorio expulsando a los otros, pero lo comparte con varias hembras, con las que se aparea. Las interacciones que ocurren por la conflictividad de los individuos y cómo afecta esto al crecimiento de la población y a la disponibilidad de terreno son factores fundamentales a tener en cuenta.
     
@@ -72,7 +72,7 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
 
     Para poder definir los valores, distribuciones y fórmulas a usar en la simulación, nos basamos en los datos
     recolectados por el Dr. Carlos de Angelo para el informe técnico ``Evaluación de la aptitud del hábitat para la
-    reintroducción del yaguareté en la cuenca del Iberá'' publicado en 2011, facilitado por la fundación Rewilding
+    reintroducción del yaguareté en la cuenca del Iberá''~\cite{deangelo2011evaluacion}, publicado en 2011, facilitado por la fundación Rewilding
     Argentina a través de su biblioteca abierta en línea.
 
     \subsection{Capacidad de caza de un individuo}
@@ -96,7 +96,7 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
         \subsubsection{Camadas}
             A lo largo de toda su vida una hembra puede dar a luz entre diez y doce cachorros, sin embargo las camadas son de entre 1 y 4 crías.
             
-            La distribución de probabilidad utilizada aquí está inspirada en la encontrada en el paper ``Análisis de la viabilidad de las poblaciones de jaguar: evaluación de parámetros y estudios de caso en tres poblaciones remanentes del sur de Sudamerica'' (por Eduardo Eizirik, Cibele B. Indrusiak y Warren E . Johnson), la cual nos provee con las probabilidades de nacimiento de una determinada cantidad de cachorros por gestación:
+            La distribución de probabilidad utilizada aquí está inspirada en la encontrada en el paper ``Análisis de la viabilidad de las poblaciones de jaguar: evaluación de parámetros y estudios de caso en tres poblaciones remanentes del sur de Sudamerica'' (por Eduardo Eizirik, Cibele B. Indrusiak y Warren E. Johnson)~\cite{eizirik2002analisis}, publicado en 2002, la cual nos provee con las probabilidades de nacimiento de una determinada cantidad de cachorros por gestación:
 
             \begin{itemize}
                 \item \textbf{1 cría:} 5\%
