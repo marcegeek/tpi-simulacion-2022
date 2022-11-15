@@ -8,9 +8,9 @@
 <Model>
 	<Id>1151503800779</Id>
 	<Name><![CDATA[SimulaciónYaguareté]]></Name>
-	<Description><![CDATA[An agent based model of interaction of animals and vegetation. A number of elephants live in the area 100 by 100 kilometers. There are two layers of geographical information: altitude and vegetation (you can switch between them). Elephants randomly wander in the area, but every once in a while they get thirsty and go to the nearest lake to drink water. As elephants walk, they demolish vegetation with a certain rate. Vegetation regenerates, but it can never exceed a natural maximum that depends on the altitude. Various landscapes can be generated.]]></Description>
+	<Description><![CDATA[Dada una cantidad arbitraria de yaguaretés, el modelo de simulación buscará encontrar la opción más óptima para la reinserción de los mismos en una área con sus respectivos parámetros de amenazas, presas y reproducción. Se realizarán un mínimo de 30 corridas donde a través de estimaciones probabilísticas se analizará el crecimiento poblacional de la especie en diversas áreas en estudio, siguiendo parámetros específicos.]]></Description>
 	<EngineVersion>6</EngineVersion>
-	<JavaPackageName><![CDATA[wandering_elephants]]></JavaPackageName>
+	<JavaPackageName><![CDATA[simulacion_yaguarete]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Day]]></ModelTimeUnit>
 	<ActiveObjectClasses>
 		<!--   =========   Active Object Class   ========  -->
@@ -573,7 +573,7 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
 					</ActiveObjectClass>
 				</ContainerLink>
@@ -609,7 +609,7 @@ moveTo( x + 1000*cos( heading ), y + 1000*sin( heading ) );]]></Body>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[jaguar_macho.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -2095,7 +2095,7 @@ salidaDatos.writeFile();]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ResourceReference>
-						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 						<ClassName><![CDATA[datos-exportados-plantilla.xlsx]]></ClassName>
 					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
@@ -2136,12 +2136,12 @@ salidaDatos.writeFile();]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<PresentationId>1169335565776</PresentationId>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 						<ClassName><![CDATA[YaguareteMacho]]></ClassName>
 					</ActiveObjectClass>
 					<GenericParameterSubstitute>
 						<GenericParameterSubstituteReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[YaguareteMacho]]></ClassName>
 							<ItemName><![CDATA[1412347600660]]></ItemName>
 						</GenericParameterSubstituteReference>
@@ -2206,12 +2206,12 @@ salidaDatos.writeFile();]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<PresentationId>1665164130708</PresentationId>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 						<ClassName><![CDATA[YaguareteHembra]]></ClassName>
 					</ActiveObjectClass>
 					<GenericParameterSubstitute>
 						<GenericParameterSubstituteReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[YaguareteHembra]]></ClassName>
 							<ItemName><![CDATA[1665162382949]]></ItemName>
 						</GenericParameterSubstituteReference>
@@ -4737,7 +4737,7 @@ for (int i=0; i< cant_hijos; i++){
 					<AgentLinkBidirectional>true</AgentLinkBidirectional>
 					<MessageType><![CDATA[Object]]></MessageType>
 					<StatechartReference>
-						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 						<ClassName><![CDATA[YaguareteHembra]]></ClassName>
 						<ItemName><![CDATA[behavior]]></ItemName>
 					</StatechartReference>
@@ -4782,7 +4782,7 @@ for (int i=0; i< cant_hijos; i++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[wandering_elephants]]></PackageName>
+						<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
 					</ActiveObjectClass>
 				</ContainerLink>
@@ -4818,7 +4818,7 @@ for (int i=0; i< cant_hijos; i++){
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[jaguar_hembra.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -4841,7 +4841,7 @@ for (int i=0; i< cant_hijos; i++){
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[1227885-middle.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -4864,7 +4864,7 @@ for (int i=0; i< cant_hijos; i++){
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[1227885-middle.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -4887,7 +4887,7 @@ for (int i=0; i< cant_hijos; i++){
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[1227885-middle.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -4910,7 +4910,7 @@ for (int i=0; i< cant_hijos; i++){
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[1227885-middle.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -5073,7 +5073,7 @@ específicos.]]></Text>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[wandering_elephants]]></PackageName>
+							<PackageName><![CDATA[simulacion_yaguarete]]></PackageName>
 							<ClassName><![CDATA[image1.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -5221,6 +5221,5 @@ específicos.]]></Text>
 		<VersionMinor>0</VersionMinor>
 		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
-	<CloudModelUuid><![CDATA[9de613af-a915-42f6-966f-ff3bbc2a3f17]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
