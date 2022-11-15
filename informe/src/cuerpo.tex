@@ -28,10 +28,16 @@
     Además de esto no se tendrán en cuenta posibles incidencias humanas ya que sé espera que la inserción del grupo de yaguaretés sea en un espacio donde puedan vivir sin problemas con humanos (como pueden ser Parques Nacionales).
 
 \section{Recolección y análisis de datos}
-    Para este caso de estudio tuvimos la posibilidad de crear un modelo de simulación dinámico donde se podría analizar el crecimiento poblacional y quizás ciertas incidencias en el crecimiento del mismo. Sin embargo notamos que había más incidencias en
-    la vida de cada uno de los individuos. Los cuales no solo se trataba de el apareamiento y las presas, si nó otras variables que permiten la supervivencia de cada uno. Por esto pensamos en tratar a cada uno de los yaguaretés como agentes únicos, los cuales
-    se ven afectados por el ambiente o los demás yaguaretés. Por esta razón decidimos modelar la simulación de tipo "Modelo basado en Agentes". Pero a su vez necesitábamos llevar a cabo ciertos eventos que sucedían cada un determinado tiempo (como la época de celo)
-    o quizás cada día (como puede ser la defensa del territorio en un rango determinado). Para esto al modelo mencionado le agregamos la posibilidad de que sea basado en Agentes pero también basado en "Eventos Discretos".
+    Para este caso de estudio tuvimos la posibilidad de crear un modelo de simulación dinámico donde se podría analizar
+    el crecimiento poblacional y quizás ciertas incidencias en el crecimiento del mismo. Sin embargo notamos que había
+    más incidencias en la vida de cada uno de los individuos. Los cuales no solo se trataba de el apareamiento y las
+    presas, si nó otras variables que permiten la supervivencia de cada uno. Por esto pensamos en tratar a cada uno de
+    los yaguaretés como agentes únicos, los cuales se ven afectados por el ambiente o los demás yaguaretés. Por esta
+    razón decidimos modelar la simulación de tipo ''Modelo basado en Agentes''.
+
+    Pero a su vez necesitábamos llevar a cabo ciertos eventos que sucedían cada un determinado tiempo (como la época de
+celo) o quizás cada día (como puede ser la defensa del territorio en un rango determinado). Para esto al modelo
+mencionado le agregamos elementos típicos de una simulación ''A Eventos Discretos''.
 
     Los factores a tener en cuenta para la simulación con sus respectivas distribuciones son los siguientes:
     
@@ -63,6 +69,12 @@
     Además la infancia de los cachorros es complicada ya que se encuentran vulnerables, y si la madre no puede conseguirles suficiente comida o cuidarlos bien entonces estos pueden fallecer.
 
 \section{Generación del modelo de simulación base}
+
+    Para poder definir los valores, distribuciones y fórmulas a usar en la simulación, nos basamos en los datos
+    recolectados por el Dr. Carlos de Angelo para el informe técnico ''Evaluación de la aptitud del hábitat para la
+    reintroducción del yaguareté en la cuenca del Iberá'' publicado en 2011, facilitado por la fundación Rewilding
+    Argentina a través de su biblioteca abierta en línea.
+
     \subsection{Capacidad de caza de un individuo}
     Se calcula que un yaguareté necesita cazar aproximadamente por semana un mínimo de 10,5 kg de presas. Por día se calcula que caza un promedio de 1.5 kg o 1.2 kg de presas o un poco más. Para este caso, se evalúa semanalmente si el individuo cazó menos de 10.5 kg de presas. Si es así el individuo fallece o en caso contrario se le quita un pesaje que usó para sobrevivir(se le quita un total de 8.5 kg de presas cazadas utilizadas para moverse, cazar otro animal o nadar).
     
@@ -197,7 +209,7 @@ satisfactoria, y procedimos a seguir adelante hacia la obtención de los resulta
 
 \subsection{Obtención de datos crudos}
 
-Recopilamos los datos en una planilla de MS Excel y representamos todas las corridas más la línea promedio.
+Recopilamos los datos en una planilla de MS Excel y graficamos los promedios de los valores finales de las corridas.
 
 \subsubsection{Escenario 1}
 \begin{figure}[H]
