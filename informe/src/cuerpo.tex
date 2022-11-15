@@ -1,8 +1,8 @@
 \nocite{*} % cargar toda la bib
   \begin{abstract}
-    La extinción de especies de animales en la actualidad genera impactos variados para el medio ambiente, desde la aparición de plagas hasta el desequilibrio ambiental. Uno de los grandes problemas que existen en la actualidad es la desaparición de depredadores tope el cual debido a su ausencia, el ecosistema donde residía tuvo un aumento de población de otras especies llegando a valores extremos y provocando el cambio del mismo. Ante esto se buscó resolver esta problemática a través de una técnica llamada ``Rewilding'' que consiste en la inserción de individuos provenientes de otras zonas en el ambiente donde estaba extinto para que este vuelva a poblar su lugar. Esto podría traer beneficios desde ambientales hasta la posibilidad de creación de parques turísticos donde la población de personas podría aprovechar esta oportunidad y crear una economía basada en el atractivo de la especie.
+    La extinción de especies de animales en la actualidad genera impactos variados para el medioambiente, desde la aparición de plagas hasta el desequilibrio ambiental. Uno de los grandes problemas que existen en la actualidad es la desaparición de depredadores tope, que por su ausencia, el ecosistema donde residía tuvo un aumento en la población de otras especies, llegando a valores extremos y provocando el cambio del mismo. Ante esto se buscó resolver esta problemática a través de una técnica llamada ``Rewilding'' que consiste en la inserción de individuos provenientes de otras zonas en el ambiente donde estaba extinto para que este vuelva a poblar su lugar. Esto podría traer beneficios desde ambientales hasta la posibilidad de la creación de parques turísticos donde la población de personas podría aprovechar esta oportunidad y crear una economía basada en el atractivo de la especie.
     En el presente estudio se buscará aplicar esta técnica con la especie animal conocida como Yaguareté o Jaguar el cual se encontraba extinto en los Esteros del Iberá (correspondiente a la provincia de Corrientes), cuyo trabajo de reinserción se está realizando actualmente. La idea principal del modelo de simulación es analizar el crecimiento de la población de esta especie según distintas variables, recreando zonas con distintas características que analizaremos en las siguientes secciones.
-    De cada zona en estudio se analizará el comportamiento de cada individuo al cazar, reproducirse, territorialidad de individuos y crecimiento de las crías.
+    De cada zona en estudio se analizará el comportamiento de cada individuo al cazar, reproducirse, la territorialidad de individuos y el crecimiento de las crías.
 
   \end{abstract}
 
@@ -13,7 +13,7 @@
 \newpage
 
 \section{Definición de sistema bajo estudio}
-    Actualmente la población del yaguareté en la Argentina cuenta con aproximadamente 250 ejemplares, los cuales están distribuidos en distintas zonas del país. Por lo que la introducción de nuevos jaguares deberá tener en cuenta diversos factores para su realización. En el caso de estudio se supondrá que se tiene 1 zona posible de inserción con sus respectivas características y se deberán repartir 12 individuos de manera que su población crezca en estado salvaje en un intervalo de tiempo de 10 años, sorteando los problemas que puedan llegar a surgir. Se tendrán en cuenta distintos comportamientos propios de la especie, las cuales serán:
+    Actualmente la población del yaguareté en la Argentina cuenta con aproximadamente 250 ejemplares, los cuales están distribuidos en distintas zonas del país. Por lo que la introducción de nuevos jaguares deberá tener en cuenta diversos factores para su realización. En el caso de estudio se supondrá que se tiene 1 zona posible de inserción con sus respectivas características y se deberán repartir 12 individuos de manera tal que su población crezca en estado salvaje en un intervalo de tiempo de 10 años, sorteando los problemas que puedan llegar a surgir. Se tendrán en cuenta distintos comportamientos propios de la especie, los cuales serán:
 
     \begin{itemize}
         \item Cacería de presas
@@ -24,22 +24,22 @@
         \item Incidencia de la edad
     \end{itemize}
 
-    Otro punto a tener en cuenta es que se supondrá que los individuos a insertar han pasado yá un ciclo en el cual se da por hecho que pueden vivir en un ambiente salvaje y no han provenido previamente de un lugar donde convivieron con humanos (es decir, no fueron domesticados).
-    Además de esto no se tendrán en cuenta posibles incidencias humanas ya que sé espera que la inserción del grupo de yaguaretés sea en un espacio donde puedan vivir sin problemas con humanos (como pueden ser Parques Nacionales).
+    Otro punto a tener en cuenta es que se supondrá que los individuos a insertar han pasado ya un ciclo en el cual se da por hecho que pueden vivir en un ambiente salvaje y no han provenido previamente de un lugar donde convivieron con humanos (es decir, no fueron domesticados).
+    Además de esto, no se tendrán en cuenta posibles incidencias humanas ya que se espera que la inserción del grupo de yaguaretés sea en un espacio donde puedan vivir sin problemas con humanos (como pueden ser Parques Nacionales).
 
 \section{Recolección y análisis de datos}
-    Para este caso de estudio tuvimos la posibilidad de crear un modelo de simulación dinámico donde se podría analizar
+    Para este caso de estudio hemos condiderado la posibilidad de crear un modelo de simulación dinámico donde se podría analizar
     el crecimiento poblacional y quizás ciertas incidencias en el crecimiento del mismo. Sin embargo notamos que había
-    más incidencias en la vida de cada uno de los individuos. Los cuales no solo se trataba de el apareamiento y las
-    presas, si nó otras variables que permiten la supervivencia de cada uno. Por esto pensamos en tratar a cada uno de
-    los yaguaretés como agentes únicos, los cuales se ven afectados por el ambiente o los demás yaguaretés. Por esta
-    razón decidimos modelar la simulación de tipo ``Modelo basado en Agentes''.
+    más incidencias en la vida de cada uno de los individuos. Los cuales no solo se trataba del apareamiento y las
+    presas, sino también otras variables que permiten la supervivencia de cada uno. Por esto pensamos en tratar a cada uno de
+    los yaguaretés como agentes únicos, los cuales se ven afectados tanto por el ambiente como por los demás yaguaretés. Por esta
+    razón decidimos modelar la simulación mediante el ``Modelo basado en Agentes''.
 
     Pero a su vez necesitábamos llevar a cabo ciertos eventos que sucedían cada un determinado tiempo (como la época de
 celo) o quizás cada día (como puede ser la defensa del territorio en un rango determinado). Para esto al modelo
 mencionado le agregamos elementos típicos de una simulación ``A Eventos Discretos''.
 
-    Los factores a tener en cuenta para la simulación con sus respectivas distribuciones son los siguientes:
+    Los factores a tener en cuenta para la simulación con sus respectivas distribuciones de probabilidad son los siguientes:
     
    \subsection{Capacidad de caza de un individuo}
     El yaguareté es un depredador hábil y eficiente. Su particularidad de ocupar amplios territorios le permite cazar pocas presas al mes, lo que logra evitar que el mismo acabe con su alimento. Además se encuentra al tope de la cadena alimenticia en sus hábitats por lo que no tiene competidores directos, exceptuando raras ocasiones en las que pueden surgir otros predadores como el puma, sin embargo, al ser casos aislados, no serán tenidos en cuenta en el estudio.
@@ -55,12 +55,12 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
     
     Aproximadamente a los dos meses y medio empiezan a comer carne, a los tres dejan de mamar alimentándose exclusivamente de carne mientras que a los seis meses (a veces antes) abandonan su escondrijo para acompañar a su madre en sus salidas de caza. Finalmente, a los dos años de edad la madre los abandona para que comiencen una vida independiente: deberán encontrar y ganarse su propio territorio.
     
-    El yaguareté alcanza su tamaño definitivo y su madurez sexual aproximadamente a la edad de tres años. En estado silvestre, viven hasta doce años, aunque hay algunos casos registrados recientemente de individuos más longevos (Link texto Nico Macho yanqui). En cautiverio en cambio, pueden superar los 20 años de edad. A lo largo de toda su vida una hembra puede dar a luz entre diez y doce cachorros.
+    El yaguareté alcanza su tamaño definitivo y su madurez sexual aproximadamente a la edad de tres años. En estado silvestre, viven hasta doce años, aunque hay algunos casos registrados recientemente de individuos más longevos. En cautiverio en cambio, pueden superar los 20 años de edad. A lo largo de toda su vida una hembra puede dar a luz entre diez y doce cachorros.
 
     \subsection{Territorialidad}
     Sus territorios son amplios, pudiendo alcanzar hasta 30.000 hectáreas para machos adultos en zonas de condiciones de vida difíciles (alta intromisión humana, cacería, baja densidad de presas, etc), mientras que las hembras ocupan superficies menores (7-10 mil hectáreas) y se observa una gran diferencia entre diferentes tipos de ambientes.
     
-    El Yaguareté es solitario. Cada macho establece su territorio expulsando a los otros, pero lo comparte con varias hembras, con las que se aparea. Las interacciones que ocurren por la conflictividad de los individuos y cómo afecta esto al crecimiento de la población y a la disponibilidad de terreno son factores fundamentales a tener en cuenta.
+    El yaguareté es solitario. Cada macho establece su territorio expulsando a los otros, pero lo comparte con varias hembras, con las que se aparea. Las interacciones que ocurren por la conflictividad de los individuos y cómo afecta esto al crecimiento de la población y a la disponibilidad de terreno son factores fundamentales a tener en cuenta.
     
     \subsection{Mortalidad}
     Hay que tener en cuenta las causas más probables de la muerte de los yaguaretés, ya que es imperativo saber la esperanza de vida de estos animales si queremos una simulación útil. No solo hay que saber las causas sino también los efectos de tal suceso, para saber cómo modelar junto a sus implicaciones.
@@ -76,9 +76,9 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
     Argentina a través de su biblioteca abierta en línea.
 
     \subsection{Capacidad de caza de un individuo}
-    Se calcula que un yaguareté necesita cazar aproximadamente por semana un mínimo de 10,5 kg de presas. Por día se calcula que caza un promedio de 1.5 kg o 1.2 kg de presas o un poco más. Para este caso, se evalúa semanalmente si el individuo cazó menos de 10.5 kg de presas. Si es así el individuo fallece o en caso contrario se le quita un pesaje que usó para sobrevivir(se le quita un total de 8.5 kg de presas cazadas utilizadas para moverse, cazar otro animal o nadar).
+    Se calcula que un yaguareté necesita cazar aproximadamente por semana un mínimo de 10,5 kg de presas. Por día se calcula que caza un promedio de 1,5 kg o 1,2 kg de presas o un poco más. Para este caso, se evalúa semanalmente si el individuo cazó menos de 10,5 kg de presas. Si es así el individuo fallece o en caso contrario se le quita un pesaje que usó para sobrevivir (se le quita un total de 8,5 kg de presas cazadas utilizadas para moverse, cazar otro animal o nadar).
     
-    La distribución utilizada para ver la cantidad de presas que pudo haber cazado un yaguareté una distribución Normal con un desvío $\sigma$ =0.3 y una media $\mu$=1.5. Lo que nos deja una variable aleatoria continua distribuida normalmente denotada como:
+    La distribución utilizada para ver la cantidad de presas que pudo haber cazado un yaguareté es una distribución normal con un desvío $\sigma=0.3$ y una media $\mu=1.5$. Lo que nos deja una variable aleatoria continua distribuida normalmente denotada como:
 
     \begin{equation}
         X \sim N(\sigma=0.3, \mu=1.5)
@@ -105,21 +105,21 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
                 \item \textbf{4 crías:} 25\%
             \end{itemize}
         \subsubsection{Sexo}
-            Cada cachorro al momento de su nacimiento tiene una probabilidad de 0.5 de ser macho o hembra. Por lo que esta variable sigue un comportamiento binomial denotado de la siguiente manera:
+            Cada cachorro al momento de su nacimiento tiene una probabilidad de $0.5$ de ser macho o hembra. Por lo que esta variable sigue un comportamiento binomial denotado de la siguiente manera:
             \begin{equation}
                 X \sim B(n=1, p=0.5)
             \end{equation}
         \subsubsection{Sobrevivencia de cada cría en una camada}
             La sobrevivencia de cada cachorro como mencionamos anteriormente depende casi exclusivamente de la madre sin embargo puede suceder que los cachorros han nacido con enfermedades u otros impedimentos que puedan crecer y desarrollarse de manera efectiva. Se debe tener en cuenta el hábitat y la posibilidad de vivir con cachorros en la zona (puede haber inundaciones, poca agua, lugares con campos, etc.), y eso impacta en una tasa de mortalidad infantil.
             
-            Los estudios indican que tienen una probabilidad de sobrevivencia en la época de crianza antes de separarse de su madre (dos años) de 0.25. Para representar esto, en el modelo de simulación utilizamos una variable aleatoria discreta con valores 0 y 1 con distribución binomial en el que si surge un 1, el cachorro fallece. Esta distribución se representa de la siguiente manera:
+            Los estudios indican que tienen una probabilidad de sobrevivencia en la época de crianza antes de separarse de su madre (dos años) de $0.25$. Para representar esto, en el modelo de simulación utilizamos una variable aleatoria discreta con valores 0 y 1 con distribución binomial en el que si surge un 1, el cachorro fallece. Esta distribución se representa de la siguiente manera:
 
             \begin{equation}
                 X \sim B(n=1, p=0.25)
             \end{equation}
             
     \subsection{Mortalidad}
-        En estado silvestre, viven hasta doce años, aunque hay algunos casos registrados recientemente de individuos más longevos. En el modelo, hay un procedimiento que regularmente elimina a un yaguareté si tiene más de 15 años y luego de los 12 años el individuo tiene una probabilidad de 0.65 de fallecer por lo que el comportamiento de esta variable también sigue una distribución de probabilidad binomial denotada como:
+        En estado silvestre, viven hasta doce años, aunque hay algunos casos registrados recientemente de individuos más longevos. En el modelo, hay un procedimiento que regularmente elimina a un yaguareté si tiene más de 15 años y luego de los 12 años el individuo tiene una probabilidad de $0.65$ de fallecer por lo que el comportamiento de esta variable también sigue una distribución de probabilidad binomial denotada como:
         
         \begin{equation}
             X \sim B(n=1, p=0.65)
@@ -129,7 +129,7 @@ mencionado le agregamos elementos típicos de una simulación ``A Eventos Discre
         Esta especie marca su territorio de distintas maneras, ya sea a través de excrementos, orina, afilandosé las uñas, etc. Estas marcas van desapareciendo a medida que pasa el tiempo por lo que cuando un macho se va por un tiemp de su territorio, otro aparece para poder reclamarlo como suyo.
         
         En caso de que uno se encuentre muy cerca de otro, hay una muy poca probabilidad de que ambos peleen porque esta especie trata de evitar estos conflictos. Sin embargo en el caso de que haya un encuentro uno de ellos morirá debido a la violenta pelea.
-        La probabilidad de que esto suceda es de 0.15 por lo que volvemos a utilizar una distribución binomial para representarlo.
+        La probabilidad de que esto suceda es de $0.15$ por lo que volvemos a utilizar una distribución binomial para representarlo.
 
 \section{Generación del modelo preliminar}
     Creamos la simulación en AnyLogic, con los tipos de modelos mencionados (Modelo basado en Agentes y Eventos Discretos), donde un agente representa al yaguareté macho y uno la hembra. Cada determinados intervalos de tiempo suceden diferentes eventos los cuales según el comportamiento de cada sexo los agentes responden de distinta manera.
@@ -196,10 +196,10 @@ satisfactoria, y procedimos a seguir adelante hacia la obtención de los resulta
 
     Decidimos probar 3 escenarios distintos:
 
-    \subsection{Escenario 1: Introducción de misma cantidad de machos y hembras}
+    \subsection{Escenario 1: introducción de misma cantidad de machos y hembras}
         Este escenario contará con una introducción de 6 machos y 6 hembras en una zona con condiciones normales de presas y amenazas. Aquí todas sus características tendrán los valores previamente desarrollados y mencionados.
 
-    \subsection{Escenario 2: Mayor cantidad de machos}
+    \subsection{Escenario 2: mayor cantidad de machos}
       En este escenario la cantidad de machos es superior, el doble de la cantidad de las hembras. Habrán 8 machos y 4 hembras. Con este escenario se pretende evaluar una zona donde haya una gran disputa del territorio por la cantidad de machos, lo cual no se cree que sería lo ideal, debido a los posibles conflictos que se produzcan entre ellos con los problemas que conllevarían. Tanto la muerte como la salida de la zona bajo estudio de uno de los machos provocarían una disminución de la cantidad de yaguaretés bajo estudio. Por lo que se pretende analizar cuánto nos podría perjudicar en el crecimiento poblacional.
 
     \subsection{Escenario 3: mayor cantidad de hembras}
