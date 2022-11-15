@@ -1,6 +1,6 @@
 \nocite{*} % cargar toda la bib
   \begin{abstract}
-    La extinción de especies de animales en la actualidad genera impactos variados para el medio ambiente, desde la aparición de plagas hasta el desequilibrio ambiental. Uno de los grandes problemas que existen en la actualidad es la desaparición de depredadores tope el cual debido a su ausencia, el ecosistema donde residía tuvo un aumento de población de otras especies llegando a valores extremos y provocando el cambio del mismo. Ante esto se buscó resolver esta problemática a través de una técnica llamada “Rewilding” que consiste en la inserción de individuos provenientes de otras zonas en el ambiente donde estaba extinto para que este vuelva a poblar su lugar. Esto podría traer beneficios desde ambientales hasta la posibilidad de creación de parques turísticos donde la población de personas podría aprovechar esta oportunidad y crear una economía basada en el atractivo de la especie.
+    La extinción de especies de animales en la actualidad genera impactos variados para el medio ambiente, desde la aparición de plagas hasta el desequilibrio ambiental. Uno de los grandes problemas que existen en la actualidad es la desaparición de depredadores tope el cual debido a su ausencia, el ecosistema donde residía tuvo un aumento de población de otras especies llegando a valores extremos y provocando el cambio del mismo. Ante esto se buscó resolver esta problemática a través de una técnica llamada ``Rewilding'' que consiste en la inserción de individuos provenientes de otras zonas en el ambiente donde estaba extinto para que este vuelva a poblar su lugar. Esto podría traer beneficios desde ambientales hasta la posibilidad de creación de parques turísticos donde la población de personas podría aprovechar esta oportunidad y crear una economía basada en el atractivo de la especie.
     En el presente estudio se buscará aplicar esta técnica con la especie animal conocida como Yaguareté o Jaguar el cual se encontraba extinto en los Esteros del Iberá (correspondiente a la provincia de Corrientes), cuyo trabajo de reinserción se está realizando actualmente. La idea principal del modelo de simulación es analizar el crecimiento de la población de esta especie según distintas variables, recreando zonas con distintas características que analizaremos en las siguientes secciones.
     De cada zona en estudio se analizará el comportamiento de cada individuo al cazar, reproducirse, territorialidad de individuos y crecimiento de las crías.
 
@@ -33,11 +33,11 @@
     más incidencias en la vida de cada uno de los individuos. Los cuales no solo se trataba de el apareamiento y las
     presas, si nó otras variables que permiten la supervivencia de cada uno. Por esto pensamos en tratar a cada uno de
     los yaguaretés como agentes únicos, los cuales se ven afectados por el ambiente o los demás yaguaretés. Por esta
-    razón decidimos modelar la simulación de tipo ''Modelo basado en Agentes''.
+    razón decidimos modelar la simulación de tipo ``Modelo basado en Agentes''.
 
     Pero a su vez necesitábamos llevar a cabo ciertos eventos que sucedían cada un determinado tiempo (como la época de
 celo) o quizás cada día (como puede ser la defensa del territorio en un rango determinado). Para esto al modelo
-mencionado le agregamos elementos típicos de una simulación ''A Eventos Discretos''.
+mencionado le agregamos elementos típicos de una simulación ``A Eventos Discretos''.
 
     Los factores a tener en cuenta para la simulación con sus respectivas distribuciones son los siguientes:
     
@@ -71,7 +71,7 @@ mencionado le agregamos elementos típicos de una simulación ''A Eventos Discre
 \section{Generación del modelo de simulación base}
 
     Para poder definir los valores, distribuciones y fórmulas a usar en la simulación, nos basamos en los datos
-    recolectados por el Dr. Carlos de Angelo para el informe técnico ''Evaluación de la aptitud del hábitat para la
+    recolectados por el Dr. Carlos de Angelo para el informe técnico ``Evaluación de la aptitud del hábitat para la
     reintroducción del yaguareté en la cuenca del Iberá'' publicado en 2011, facilitado por la fundación Rewilding
     Argentina a través de su biblioteca abierta en línea.
 
@@ -96,7 +96,7 @@ mencionado le agregamos elementos típicos de una simulación ''A Eventos Discre
         \subsubsection{Camadas}
             A lo largo de toda su vida una hembra puede dar a luz entre diez y doce cachorros, sin embargo las camadas son de entre 1 y 4 crías.
             
-            La distribución de probabilidad utilizada aquí está inspirada en la encontrada en el paper “Análisis de la viabilidad de las poblaciones de jaguar: evaluación de parámetros y estudios de caso en tres poblaciones remanentes del sur de Sudamerica” (por Eduardo Eizirik, Cibele B. Indrusiak y Warren E . Johnson), la cual nos provee con las probabilidades de nacimiento de una determinada cantidad de cachorros por gestación:
+            La distribución de probabilidad utilizada aquí está inspirada en la encontrada en el paper ``Análisis de la viabilidad de las poblaciones de jaguar: evaluación de parámetros y estudios de caso en tres poblaciones remanentes del sur de Sudamerica'' (por Eduardo Eizirik, Cibele B. Indrusiak y Warren E . Johnson), la cual nos provee con las probabilidades de nacimiento de una determinada cantidad de cachorros por gestación:
 
             \begin{itemize}
                 \item \textbf{1 cría:} 5\%
