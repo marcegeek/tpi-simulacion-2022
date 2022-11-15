@@ -269,25 +269,34 @@ pueden llegar a crecer bajo determinadas condiciones iniciales.
 Para poder llegar a estos estimativos utilizaremos el siguiente análisis para así llegar a nuestro objetivo de
 verificar la supervivencia del yaguareté en estas zonas elegidas.
 
-        \subsection{Intervalos de confianza t-apareado}
+        \subsection{Análisis prueba t apareada}
+            Para poder realizar una comparación de los distintos escenarios, emplearemos la herramienta de la prueba t apareada con un 95\% de confianza.
 
-            La prueba de intervalos de confianza t-apareado nos dice que el escenario 2 es peor para la supervivencia de la especie.
+            Como puede verse en la figura \ref{fig:esc2-analisis}, la prueba t apareada nos dice que al finalizar la simulación, en el escenario 2 la población tiene una media similar que la del escenario 1, lo que significa que podemos esperar resultados similares en ambas condiciones.
 
             \begin{figure}[H]
                 \centering
                 \includegraphics{esc2/analisis}
-                \caption{Conclusión del análisis por intervalos de confianza t-apareado comparando el escenario 2 con el 1.}
+                \caption{Conclusión de la prueba t apareada comparando el escenario 2 con el 1.}
                 \label{fig:esc2-analisis}
             \end{figure}
 
-            El mismo análisis nos dice que en el escenario 3 la población al finalizar la simulación tiene una media
-            similar al escenario 1, lo que significa que podemos esperar resultados similares en ambas condiciones.
+            El mismo análisis también nos dice que al finalizar la simulación, en el escenario 3 la población tiene una media superior que la del escenario 1 (figura \ref{fig:esc3-analisis}), lo que significa que el escenario 3 presenta mejores condiciones para la supervivencia de la especie.
 
             \begin{figure}[H]
                 \centering
                 \includegraphics{esc3/analisis}
-                \caption{Conclusión del análisis por intervalos de confianza t-apareado comparando el escenario 3 con el 1.}
+                \caption{Conclusión de la prueba t apareada comparando el escenario 3 con el 1.}
                 \label{fig:esc3-analisis}
+            \end{figure}
+
+            Finalmente, realizamos la comparación del escenario 3 con el escenario 2 (figura \ref{fig:esc3-analisis-2v3}), para la cual el análisis indica que el escenario 3 presenta mejores condiciones que el escenario 2, lo cual coincide con los resultados anteriores.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics{esc3/analisis-2v3}
+                \caption{Conclusión de la prueba t apareada comparando el escenario 3 con el 2.}
+                \label{fig:esc3-analisis-2v3}
             \end{figure}
 
         %\subsection{Intervalos de confianza 2t-muestras modificado}
@@ -295,9 +304,9 @@ verificar la supervivencia del yaguareté en estas zonas elegidas.
 \section{Documentación del modelo, sugerencias y conclusiones}
   Una vez revisados los resultados finales pudimos comprobar que la disposición de los individuos según su sexo es importante. En el caso en el que los machos predominan en una zona, la misma es disputada lo que si bien en nuestro modelo se representa con una mortalidad de uno de los mismos, también podría representar una movilización de uno de los machos fuera de esa zona hacia otra. En la actualidad una problemática que se puede notar en la extinción de la especie en nuestro país (Argentina) es la falta de espacio en donde poder sobrevivir. La destrucción del hogar del yaguareté es un gran factor para la desaparición del mismo. En el caso del modelo nosotros como mencionamos anteriormente suponemos que es una zona en la que no tendría ese problema ya que se representa un ambiente seguro, ya sea un parque nacional o un lugar sin un fácil acceso para el humano.
 
-  Luego hemos visto cómo en estas condiciones que se mencionan, la disposición de una misma cantidad de machos y hembras, no tiene malos resultados, de hecho en los resultados obtenidos donde predominan las hembras se puede ver una leve mejoría de cantidad de individuos debido a que hay menos disputa de territorios. Estos resultados eran los esperados debido a lo que podíamos ver en la información que habíamos obtenido en nuestra investigación.
+  Luego hemos visto cómo en estas condiciones que se mencionan, tanto la disposición de una misma cantidad de machos y hembras como una mayor cantidad de machos que de hembras, no han arrojado resultados significativamente diferentes. Por otro lado, en los resultados obtenidos donde predominan las hembras se puede ver una leve mejoría de cantidad de individuos debido a que hay menos disputa de territorios. Estos resultados eran los esperados debido a lo que podíamos ver en la información que habíamos obtenido en nuestra investigación.
 
   Si bien las hembras también son territoriales, éstas lo hacen para proteger a sus cachorros, además en el territorio de un macho puede haber muchas hembras, lo que permite la reproducción y crecimiento de la población. Por lo tanto en caso de que se debiera introducir una cantidad en una zona de yaguaretés silvestres donde se crea que hay más machos, lo que se podría hacer sería introducir hembras hasta el punto en el que mínimamente se iguale la cantidad de ambos sexos. En el mejor de los casos, se podría insertar en la zona más cantidad de hembras que de machos. Lo ideal sería evitar la inserción de muchos machos debido a la disputa de los territorios, lo cual pudimos comprobar con el modelo de simulación desarrollado y finalmente con el análisis estadístico.
 
-  Como sugerencia, se podría mejorar el modelo en relación con los movimientos de los yaguaretés, lo que quizás se podría revisar un poco más en el código. Sin embargo, consideramos importante que se tenga una actividad continua de rewilding. Esto quiere decir que cada cierto tiempo se vuelvan a introducir nuevos individuos dentro de la zona para que la población de yaguaretés crezca aún más. Ya que como pudimos ver, luego de 10 años los mismos decrecen en números incluso en el mejor de los escenarios vistos. Por esto es que es necesario seguir la regla comprobada en este modelo en el que se inserte mayor cantidad de hembras que de machos o igualar de ser posible la cantidad de machos que de hembras.
-Esto en conjunto de evitar introducir mas cantidad de machos, nos permitirá tener una cantidad de yaguaretés adultos en estado salvaje sin contar los probables embarazos o crianzas que se estén dando en ese momento. Otra mejora que se podría hacer sería la inserción de un punto mínimo de individuos de un sexo el cual introduciría un nuevo ejemplar del mismo en base a un mínimo de individuos en el caso de que se necesite.
+  Como sugerencia, se podría mejorar el modelo en relación con los movimientos de los yaguaretés, lo que quizás se podría revisar un poco más en el código. Sin embargo, consideramos importante que se tenga una actividad continua de rewilding. Esto quiere decir que cada cierto tiempo se vuelvan a introducir nuevos individuos dentro de la zona para que la población de yaguaretés crezca aún más. Ya que como pudimos ver, luego de 10 años los mismos decrecen en números incluso en el mejor de los escenarios vistos. Por esto es que es necesario seguir la regla comprobada en este modelo en el que se inserte mayor cantidad de hembras que de machos.
+Esto en conjunto, de evitar introducir mas cantidad de machos, nos permitirá tener una cantidad de yaguaretés adultos en estado salvaje sin contar los probables embarazos o crianzas que se estén dando en ese momento. Otra mejora que se podría hacer sería la inserción de un punto mínimo de individuos de un sexo el cual introduciría un nuevo ejemplar del mismo en base a un mínimo de individuos en el caso de que se necesite.
