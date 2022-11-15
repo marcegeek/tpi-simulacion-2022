@@ -8,13 +8,28 @@
 
     \keywords{rewilding \and yaguareté \and jaguar \and ambiente \and simulación \and iberá \and felinos \and animales \and ecosistema \and biología \and puma \and medioambiente}
 
-\section{Introducción}
-    Actualmente la población del yaguareté en la Argentina cuenta con aproximadamente 250 ejemplares, los cuales están distribuidos en distintas zonas del país. Por lo que la introducción de nuevos jaguares deberá tener en cuenta diversos factores para su introducción. En el caso de estudio se supondrá que se tienen 2 zonas posibles de inserción con distintas características y se deberán repartir entre 5 y 12 individuos en estas zonas de manera que puedan hacer crecer su población en un intervalo de tiempo de 10 años, sorteando los problemas que puedan surgir. Se tiene en cuenta la territorialidad propia de la especie no se pueden poner todos los ejemplares juntos en un una sola zona o en un lugar donde se cree que puede haber otros yaguaretés salvajes debido a que puede causar peleas entre su misma especie la cual ya se encuentra muy diezmada por causa del hombre.
-    
-    Otro punto a tener en cuenta es que se supondrá que los individuos a insertar han pasado yá un ciclo en el cual se da por hecho que pueden vivir en un ambiente salvaje y no han provenido previamente de un lugar donde convivieron con humanos (es decir, no fueron domesticados).
+\section{Paso 1: Definición de sistema bajo estudio}
+    Actualmente la población del yaguareté en la Argentina cuenta con aproximadamente 250 ejemplares, los cuales están distribuidos en distintas zonas del país. Por lo que la introducción de nuevos jaguares deberá tener en cuenta diversos factores para su realización. En el caso de estudio se supondrá que se tiene 1 zona posible de inserción con sus respectivas características y se deberán repartir 12 individuos de manera que su población crezca en estado salvaje en un intervalo de tiempo de 10 años, sorteando los problemas que puedan llegar a surgir. Se tendrán en cuenta distintos comportamientos propios de la especie, las cuales serán:
 
-\section{Factores a analizar}
-    Los factores a tener en cuenta para la simulación son los siguientes:
+    \begin{itemize}
+        \item Cacería de presas
+        \item Época de celo
+        \item Movimiento en el agua de la especie
+        \item Embarazo
+        \item Territorialidad del macho
+        \item Incidencia de la edad
+    \end{itemize}
+
+    Otro punto a tener en cuenta es que se supondrá que los individuos a insertar han pasado yá un ciclo en el cual se da por hecho que pueden vivir en un ambiente salvaje y no han provenido previamente de un lugar donde convivieron con humanos (es decir, no fueron domesticados).
+    Además de esto no se tendrán en cuenta posibles incidencias humanas ya que sé espera que la inserción del grupo de yaguaretés sea en un espacio donde puedan vivir sin problemas con humanos (como pueden ser Parques Nacionales).
+
+\section{Paso 2: Generación del modelo de simulación base}
+    Para este caso de estudio tuvimos la posibilidad de crear un modelo de simulación dinámico donde se podría analizar el crecimiento poblacional y quizás ciertas incidencias en el crecimiento del mismo. Sin embargo notamos que había más incidencias en
+    la vida de cada uno de los individuos. Los cuales no solo se trataba de el apareamiento y las presas, si nó otras variables que permiten la supervivencia de cada uno. Por esto pensamos en tratar a cada uno de los yaguaretés como agentes únicos, los cuales
+    se ven afectados por el ambiente o los demás yaguaretés. Por esta razón decidimos modelar la simulación de tipo "Modelo basado en Agentes". Pero a su vez necesitábamos llevar a cabo ciertos eventos que sucedían cada un determinado tiempo (como la época de celo)
+    o quizás cada día (como puede ser la defensa del territorio en un rango determinado). Para esto al modelo mencionado le agregamos la posibilidad de que sea basado en Agentes pero también basado en "Eventos Discretos".
+
+    Los factores a tener en cuenta para la simulación con sus respectivas distribuciones son los siguientes:
     
    \subsection{Capacidad de caza de un individuo}
     El yaguareté es un depredador hábil y eficiente. Su particularidad de ocupar amplios territorios le permite cazar pocas presas al mes, lo que logra evitar que el mismo acabe con su alimento. Además se encuentra al tope de la cadena alimenticia en sus hábitats por lo que no tiene competidores directos, exceptuando raras ocasiones en las que pueden surgir otros predadores como el puma, sin embargo, al ser casos aislados, no serán tenidos en cuenta en el estudio.
@@ -43,7 +58,7 @@
     Si bien una gran causa del fallecimiento de los individuos es por la amenaza humana ya sea por cazarlos o porque los territorios de la especie se ven disminuidos con fines comerciales o inmobiliarios. Al reducir el hábitat y ser una especie territorial, esto hace expulsar a los machos a zonas pobladas, lo que eleva el riesgo de ser asesinados.
     Además la infancia de los cachorros es complicada ya que se encuentran vulnerables, y si la madre no puede conseguirles suficiente comida o cuidarlos bien entonces estos pueden fallecer.
 
-\section{Datos recolectados}
+\section{Paso 3: Recolección y análisis de datos}
     \subsection{Capacidad de caza de un individuo}
     Se calcula que un yaguareté necesita cazar aproximadamente por semana un mínimo de 10,5 kg de presas. Por día se calcula que caza un promedio de 1.5 kg o 1.2 kg de presas o un poco más. Para este caso, se evalúa semanalmente si el individuo cazó menos de 10.5 kg de presas. Si es así el individuo fallece o en caso contrario se le quita un pesaje que usó para sobrevivir(se le quita un total de 8.5 kg de presas cazadas utilizadas para moverse, cazar otro animal o nadar).
     
@@ -99,8 +114,50 @@
         
         En caso de que uno se encuentre muy cerca de otro, hay una muy poca probabilidad de que ambos peleen porque esta especie trata de evitar estos conflictos. Sin embargo en el caso de que haya un encuentro uno de ellos morirá debido a la violenta pelea.
         La probabilidad de que esto suceda es de 0.15 por lo que volvemos a utilizar una distribución binomial para representarlo.
-        
-\section{Escenarios Planteados}
+
+\section{Paso 4: Generación del modelo preliminar}
+    Creamos la simulación en AnyLogic, con los tipos de modelos mencionados (Modelo basado en Agentes y Eventos Discretos), donde un agente representa al yaguareté macho y uno la hembra. Cada determinados intervalos de tiempo suceden diferentes eventos los cuales según el comportamiento de cada sexo los agentes responden de distinta manera.
+
+    Ambos tienen en común comportamientos de alimentación y reproducción. Pero hay otros que son exclusivos de cada uno, el macho cuenta con un comportamiento territorial, mientras que la hembra cambia su estilo de vida en el embarazo y la época de crianza de los cachorros. Esto por ejemplo se representa con una actitud de la hembra con movimientos más lentos y territoriales de lo normal.
+
+    El modelo de simulación tiene establecido el tiempo de configuración en días, los cuales cada paso de un yaguareté es un día. Diariamente, los yaguaretés se mueven en una dirección específica cazando y marcando territorios. También son capaces de nadar y moverse hacia otros lugares por aguas no tan profundas. Además de esto, la herramienta permite generar aleatoriamente nuevas zonas al apretar un botón en el caso de que se requiera cambiar de mapa en el cual se encuentran los individuos actualmente.
+
+    En base al objetivo, cada 10 años se inicia una nueva corrida guardando los datos de la simulación para luego ser usados en herramientas estadísticas para así llegar a una conclusión final en cuanto a los escenarios planteados previamente. Se planea conseguir 30 muestras de cada escenario para comparar resultados y definir cuál será la opción más óptima o qué cambios realizar.
+
+    Aparte de esto, se puede monitorear de manera continua distintos parámetros a través de gráficos que se encuentran en el modelo.
+    Los mismos se pueden ver a continuación:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics{/images/imagen1}
+        \caption{Cantidad de fallecimientos, embarazos y crías en total que se desarrollaron satisfactoriamente en la época de crianza}
+        \label{fig:fig1}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics{/images/imagen2}
+        \caption{Cantidad de yaguaretés hembras en comparación con cantidad de machos}
+        \label{fig:fig2}
+        \centering
+        \includegraphics[width=350pt]{/images/imagen4}
+        \caption{Cantidad de individuos en el área por año}
+        \label{fig:fig4}
+    \end{figure}
+
+\section{Pasos 5 y 6: Verificación y validación del modelo}
+    \subsection{Verificación del modelo}
+    Hemos comprobado en varias ocasiones el modelo, donde en general han surgido problemas con el movimiento en las áreas o distancias entre los individuos.
+    Las distribuciones previamente mencionadas corresponden en general a un informe de confianza donde se estudió el estilo de vida del yaguareté y en la simulación recreada hemos confirmado de que funcionan correctamente con lo que representabamos.
+    El modelo luego de ciertos arreglos principalmente del movimiento de los agentes, funcionó correctamente, pudiendo llegar así a los resultados finales.
+
+    \subsection{Validación del modelo}
+    Para moldear el modelo de manera que se vea lo más realista posible (con la dificultad que lleva modelar la vida real de un animal), los arreglos para la verificación del modelo fueron sobretodo por las distancias entre individuos.
+    Casi siempre se notaba que encuentro entre machos era frecuente por lo que esto llevaba a la muerte de muchos de ellos. Esto en la vida real se puede ver pero no de una manera tan frecuente, en general esta especie busca alejarse de los problemas entre ellos a menos que se encuentren muy cerca uno de otro.
+    Por esto es que la distribución de muerte de un macho fue reducida al igual que la distancia que produzca esta función programada en el modelo.
+    Otro punto que encontramos que nos producía diferencias entre los números de poblaciones reales junto con los resultados que obteníamos era que en general no se producía el apareamiento de manera efectiva.
+    Por esto decidimos aumentar el rango de distancia en el cual los machos podrían encontrar a una hembra y aparearse. Esto se cambió de manera que no afectara demasiado el apego a la realidad (que no se produzca a demasiados kilometros de distancia entre un macho y una hembra).
+
+\section{Paso 8: Determinación de los escenarios para el análisis}
     \subsection{Escenario 1: Introducción de misma cantidad de machos y hembras}
         Este escenario contará con una introducción de 6 machos y 6 hembras en una zona con condiciones normales de presas y amenazas. Aquí todas sus características tendrán los valores previamente desarrollados y mencionados.
 
@@ -110,37 +167,8 @@
     \subsection{Escenario 3: mayor cantidad de hembras}
       En este escenario, caso contrario del escenario 2, hay más cantidad de hembras que de machos, con lo cual inicialmente se pretende comprobar si la inserción de más individuos de sexo femenino significa que podría nacer más cantidad de crías ayudando al crecimiento poblacional. Si bien la disputa del terreno puede ser menor, también puede ser que la falta de machos influya debido a la falta de encuentro entre ambos sexos. Quizás por tener mucha mayor cantidad de un solo sexo, como también puede suceder que un macho pueda mantener a un grupo de hembras dentro de su territorio con las que se aparea. Esto se podrá comprobar finalmente en las próximas secciones con análisis estadísticos.
 
-\section{Creación del modelo de simulación}
-    Creamos la simulación en AnyLogic, realizando un modelo combinado orientado a agentes y eventos discretos. Consiste en un agente que representa al yaguareté macho y uno para la hembra, donde cada determinados intervalos de tiempo suceden distintos eventos los cuales según el comportamiento de cada sexo los agentes responden de distinta manera.
-    
-    Ambos tienen comportamientos de alimentación y reproducción. Pero hay otros comportamientos que son exclusivos de cada uno, el macho cuenta con un comportamiento territorial y la hembra con el embarazo y la época de crianza de los cachorros.
 
-
-    El modelo de simulación tiene configurado el tiempo de configuración en días, los cuales cada paso es un día. Cada día los yaguaretés se mueven en una dirección específica cazando y marcando territorios. También son capaces de nadar y moverse hacia otros lugares por aguas no tan profundas. Además de esto, la herramienta permite generar aleatoriamente nuevas zonas al apretar un botón en el caso de que se requiera cambiar de mapa en el cual se encuentran los individuos actualmente.
-
-    En base al objetivo, cada 10 años se inicia una nueva corrida guardando los datos de la simulación para luego ser usados en herramientas de estadísticas para poder llegar a una conclusión final en cuanto a los escenarios planteados previamente. Se planea conseguir 30 muestras de cada escenario para comparar resultados y definir cuál será la opción más óptima.
-    
-    Además de esto se puede monitorear de manera continua distintos parámetros a través de gráficos que se encuentran en el modelo. 
-    Los mismos se pueden ver a continuación:
-    
-    \begin{figure}[H]
-        \centering
-        \includegraphics{imagen1}
-        \caption{Cantidad de fallecimientos, embarazos y crías en total que se desarrollaron satisfactoriamente en la época de crianza}
-        \label{fig:fig1}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics{imagen2}
-        \caption{Cantidad de yaguaretés hembras en comparación con cantidad de machos}
-        \label{fig:fig2}
-        \centering
-        \includegraphics[width=350pt]{imagen4}
-        \caption{Cantidad de individuos en el área por año}
-        \label{fig:fig4}
-    \end{figure}
-
-\section{Resultados obtenidos}
+\section{Paso 7: Generación del modelo final}
 
     Recopilamos los datos en una planilla de MS Excel y representamos todas las corridas más la línea promedio.
 
@@ -195,7 +223,7 @@
         \endminipage
     \end{figure}
 
-    \section{Análisis estadísticos}
+    \section{Paso 9: Análisis de sensibilidad}
         En esta sección veremos los análisis a los resultados de los escenarios que hemos utilizado para llegar a un
         estimado de la población que puede llegar a tener en 10 años, estas zonas a las que hemos realizado
         el estudio. Esto también nos dará idea su cantidad de mortandad y/o embarazos, junto con la cantidad de crías que
@@ -227,7 +255,10 @@
 
         %\subsection{Intervalos de confianza 2t-muestras modificado}
             
-\section{Conclusiones}
+\section{Paso 10: Documentación del modelo, sugerencias y conclusiones}
+ \subsection{Sugerencias}
+
+ \subsection{Conclusiones}
   Una vez revisados los resultados finales pudimos comprobar que la disposición de los individuos según su sexo es importante. En el caso en el que los machos predominan en una zona, la misma es disputada lo que si bien en nuestro modelo se representa con una mortalidad de uno de los mismos, también podría ser visto como una movilización de uno de los machos fuera de esa zona. En la actualidad una problemática que se puede notar en la extinción de la especie en nuestro país (Argentina) es la falta de espacio en donde poder vivir. La destrucción del hogar del yaguareté es un gran factor para la desaparición del mismo. En el caso del modelo nosotros como mencionamos anteriormente suponemos que es una zona en la que no tendría ese problema ya que representamos ya sea un parque nacional o un lugar alejado de la sociedad humana.
 
   Luego hemos visto cómo en estas condiciones que se mencionan, la disposición de una misma cantidad de machos y hembras, no tiene malos resultados, de hecho en los resultados obtenidos donde predominan las hembras se puede ver una leve mejoría de cantidad de individuos debido a que hay menos disputa de territorios. Estos resultados eran los esperados debido a lo que podíamos ver en la información que habíamos obtenido en nuestra investigación.
